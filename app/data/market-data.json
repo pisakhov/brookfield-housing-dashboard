@@ -1,0 +1,723 @@
+{
+  "fetchedAt": "2026-08-01T14:22:56.197Z",
+  "geography": {
+    "city": "Brookfield",
+    "county": "Fairfield County",
+    "state": "Connecticut",
+    "zillowRegionId": 23843
+  },
+  "sources": {
+    "inventory": "https://files.zillowstatic.com/research/public_csvs/invt_fs/City_invt_fs_uc_sfrcondo_sm_month.csv",
+    "newListings": "https://files.zillowstatic.com/research/public_csvs/new_listings/City_new_listings_uc_sfrcondo_sm_month.csv",
+    "daysPending": "https://files.zillowstatic.com/research/public_csvs/med_doz_pending/County_med_doz_pending_uc_sfrcondo_sm_month.csv",
+    "mortgage": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=MORTGAGE30US"
+  },
+  "notes": {
+    "inventory": "Zillow smoothed monthly for-sale inventory, city geography, all homes.",
+    "newListings": "Zillow smoothed monthly new listings, city geography, all homes.",
+    "daysPending": "Zillow smoothed median days to pending for Fairfield County; the county proxy is used because Zillow suppresses most historical Brookfield city observations.",
+    "mortgage": "Monthly arithmetic mean computed from Freddie Mac's weekly 30-year fixed-rate series distributed by FRED (MORTGAGE30US)."
+  },
+  "observations": [
+    {
+      "date": "2018-03",
+      "inventory": 106,
+      "newListings": 25,
+      "countyDaysPending": 54,
+      "mortgageRate": 4.444
+    },
+    {
+      "date": "2018-04",
+      "inventory": 120,
+      "newListings": 40,
+      "countyDaysPending": 29,
+      "mortgageRate": 4.467
+    },
+    {
+      "date": "2018-05",
+      "inventory": 129,
+      "newListings": 39,
+      "countyDaysPending": 23,
+      "mortgageRate": 4.586
+    },
+    {
+      "date": "2018-06",
+      "inventory": 133,
+      "newListings": 40,
+      "countyDaysPending": 25,
+      "mortgageRate": 4.57
+    },
+    {
+      "date": "2018-07",
+      "inventory": 127,
+      "newListings": 32,
+      "countyDaysPending": 32,
+      "mortgageRate": 4.527
+    },
+    {
+      "date": "2018-08",
+      "inventory": 124,
+      "newListings": 32,
+      "countyDaysPending": 38,
+      "mortgageRate": 4.55
+    },
+    {
+      "date": "2018-09",
+      "inventory": 126,
+      "newListings": 29,
+      "countyDaysPending": 40,
+      "mortgageRate": 4.628
+    },
+    {
+      "date": "2018-10",
+      "inventory": 127,
+      "newListings": 27,
+      "countyDaysPending": 42,
+      "mortgageRate": 4.83
+    },
+    {
+      "date": "2018-11",
+      "inventory": 126,
+      "newListings": 26,
+      "countyDaysPending": 45,
+      "mortgageRate": 4.866
+    },
+    {
+      "date": "2018-12",
+      "inventory": 113,
+      "newListings": 20,
+      "countyDaysPending": 53,
+      "mortgageRate": 4.638
+    },
+    {
+      "date": "2019-01",
+      "inventory": 99,
+      "newListings": 18,
+      "countyDaysPending": 58,
+      "mortgageRate": 4.464
+    },
+    {
+      "date": "2019-02",
+      "inventory": 93,
+      "newListings": 18,
+      "countyDaysPending": 52,
+      "mortgageRate": 4.37
+    },
+    {
+      "date": "2019-03",
+      "inventory": 103,
+      "newListings": 28,
+      "countyDaysPending": 40,
+      "mortgageRate": 4.265
+    },
+    {
+      "date": "2019-04",
+      "inventory": 112,
+      "newListings": 31,
+      "countyDaysPending": 29,
+      "mortgageRate": 4.143
+    },
+    {
+      "date": "2019-05",
+      "inventory": 128,
+      "newListings": 42,
+      "countyDaysPending": 25,
+      "mortgageRate": 4.072
+    },
+    {
+      "date": "2019-06",
+      "inventory": 141,
+      "newListings": 41,
+      "countyDaysPending": 27,
+      "mortgageRate": 3.803
+    },
+    {
+      "date": "2019-07",
+      "inventory": 152,
+      "newListings": 42,
+      "countyDaysPending": 32,
+      "mortgageRate": 3.765
+    },
+    {
+      "date": "2019-08",
+      "inventory": 153,
+      "newListings": 34,
+      "countyDaysPending": 41,
+      "mortgageRate": 3.616
+    },
+    {
+      "date": "2019-09",
+      "inventory": 151,
+      "newListings": 33,
+      "countyDaysPending": 45,
+      "mortgageRate": 3.605
+    },
+    {
+      "date": "2019-10",
+      "inventory": 148,
+      "newListings": 31,
+      "countyDaysPending": 48,
+      "mortgageRate": 3.688
+    },
+    {
+      "date": "2019-11",
+      "inventory": 138,
+      "newListings": 25,
+      "countyDaysPending": 49,
+      "mortgageRate": 3.695
+    },
+    {
+      "date": "2019-12",
+      "inventory": 122,
+      "newListings": 17,
+      "countyDaysPending": 63,
+      "mortgageRate": 3.72
+    },
+    {
+      "date": "2020-01",
+      "inventory": 106,
+      "newListings": 15,
+      "countyDaysPending": 69,
+      "mortgageRate": 3.624
+    },
+    {
+      "date": "2020-02",
+      "inventory": 98,
+      "newListings": 20,
+      "countyDaysPending": 60,
+      "mortgageRate": 3.465
+    },
+    {
+      "date": "2020-03",
+      "inventory": 101,
+      "newListings": 28,
+      "countyDaysPending": 38,
+      "mortgageRate": 3.45
+    },
+    {
+      "date": "2020-04",
+      "inventory": 105,
+      "newListings": 28,
+      "countyDaysPending": 29,
+      "mortgageRate": 3.306
+    },
+    {
+      "date": "2020-05",
+      "inventory": 115,
+      "newListings": 32,
+      "countyDaysPending": 32,
+      "mortgageRate": 3.232
+    },
+    {
+      "date": "2020-06",
+      "inventory": 114,
+      "newListings": 31,
+      "countyDaysPending": 31,
+      "mortgageRate": 3.162
+    },
+    {
+      "date": "2020-07",
+      "inventory": 112,
+      "newListings": 35,
+      "countyDaysPending": 24,
+      "mortgageRate": 3.016
+    },
+    {
+      "date": "2020-08",
+      "inventory": 103,
+      "newListings": 36,
+      "countyDaysPending": 17,
+      "mortgageRate": 2.935
+    },
+    {
+      "date": "2020-09",
+      "inventory": 102,
+      "newListings": 36,
+      "countyDaysPending": 17,
+      "mortgageRate": 2.89
+    },
+    {
+      "date": "2020-10",
+      "inventory": 101,
+      "newListings": 36,
+      "countyDaysPending": 18,
+      "mortgageRate": 2.834
+    },
+    {
+      "date": "2020-11",
+      "inventory": 94,
+      "newListings": 29,
+      "countyDaysPending": 19,
+      "mortgageRate": 2.765
+    },
+    {
+      "date": "2020-12",
+      "inventory": 82,
+      "newListings": 23,
+      "countyDaysPending": 21,
+      "mortgageRate": 2.684
+    },
+    {
+      "date": "2021-01",
+      "inventory": 65,
+      "newListings": 15,
+      "countyDaysPending": 27,
+      "mortgageRate": 2.735
+    },
+    {
+      "date": "2021-02",
+      "inventory": 53,
+      "newListings": 14,
+      "countyDaysPending": 25,
+      "mortgageRate": 2.81
+    },
+    {
+      "date": "2021-03",
+      "inventory": 47,
+      "newListings": 19,
+      "countyDaysPending": 19,
+      "mortgageRate": 3.083
+    },
+    {
+      "date": "2021-04",
+      "inventory": 49,
+      "newListings": 27,
+      "countyDaysPending": 8,
+      "mortgageRate": 3.06
+    },
+    {
+      "date": "2021-05",
+      "inventory": 59,
+      "newListings": 33,
+      "countyDaysPending": 7,
+      "mortgageRate": 2.963
+    },
+    {
+      "date": "2021-06",
+      "inventory": 67,
+      "newListings": 36,
+      "countyDaysPending": 8,
+      "mortgageRate": 2.975
+    },
+    {
+      "date": "2021-07",
+      "inventory": 74,
+      "newListings": 38,
+      "countyDaysPending": 10,
+      "mortgageRate": 2.868
+    },
+    {
+      "date": "2021-08",
+      "inventory": 75,
+      "newListings": 36,
+      "countyDaysPending": 13,
+      "mortgageRate": 2.843
+    },
+    {
+      "date": "2021-09",
+      "inventory": 72,
+      "newListings": 33,
+      "countyDaysPending": 14,
+      "mortgageRate": 2.9
+    },
+    {
+      "date": "2021-10",
+      "inventory": 63,
+      "newListings": 26,
+      "countyDaysPending": 16,
+      "mortgageRate": 3.067
+    },
+    {
+      "date": "2021-11",
+      "inventory": 54,
+      "newListings": 20,
+      "countyDaysPending": 16,
+      "mortgageRate": 3.067
+    },
+    {
+      "date": "2021-12",
+      "inventory": 42,
+      "newListings": 16,
+      "countyDaysPending": 17,
+      "mortgageRate": 3.098
+    },
+    {
+      "date": "2022-01",
+      "inventory": 34,
+      "newListings": 14,
+      "countyDaysPending": 16,
+      "mortgageRate": 3.445
+    },
+    {
+      "date": "2022-02",
+      "inventory": 31,
+      "newListings": 13,
+      "countyDaysPending": 13,
+      "mortgageRate": 3.763
+    },
+    {
+      "date": "2022-03",
+      "inventory": 35,
+      "newListings": 17,
+      "countyDaysPending": 9,
+      "mortgageRate": 4.172
+    },
+    {
+      "date": "2022-04",
+      "inventory": 41,
+      "newListings": 21,
+      "countyDaysPending": 7,
+      "mortgageRate": 4.982
+    },
+    {
+      "date": "2022-05",
+      "inventory": 50,
+      "newListings": 27,
+      "countyDaysPending": 7,
+      "mortgageRate": 5.23
+    },
+    {
+      "date": "2022-06",
+      "inventory": 60,
+      "newListings": 33,
+      "countyDaysPending": 8,
+      "mortgageRate": 5.522
+    },
+    {
+      "date": "2022-07",
+      "inventory": 64,
+      "newListings": 32,
+      "countyDaysPending": 10,
+      "mortgageRate": 5.412
+    },
+    {
+      "date": "2022-08",
+      "inventory": 64,
+      "newListings": 29,
+      "countyDaysPending": 13,
+      "mortgageRate": 5.223
+    },
+    {
+      "date": "2022-09",
+      "inventory": 59,
+      "newListings": 24,
+      "countyDaysPending": 14,
+      "mortgageRate": 6.112
+    },
+    {
+      "date": "2022-10",
+      "inventory": 56,
+      "newListings": 22,
+      "countyDaysPending": 15,
+      "mortgageRate": 6.9
+    },
+    {
+      "date": "2022-11",
+      "inventory": 48,
+      "newListings": 16,
+      "countyDaysPending": 17,
+      "mortgageRate": 6.805
+    },
+    {
+      "date": "2022-12",
+      "inventory": 41,
+      "newListings": 11,
+      "countyDaysPending": 20,
+      "mortgageRate": 6.364
+    },
+    {
+      "date": "2023-01",
+      "inventory": 31,
+      "newListings": 7,
+      "countyDaysPending": 20,
+      "mortgageRate": 6.272
+    },
+    {
+      "date": "2023-02",
+      "inventory": 27,
+      "newListings": 10,
+      "countyDaysPending": 17,
+      "mortgageRate": 6.258
+    },
+    {
+      "date": "2023-03",
+      "inventory": 29,
+      "newListings": 15,
+      "countyDaysPending": 11,
+      "mortgageRate": 6.544
+    },
+    {
+      "date": "2023-04",
+      "inventory": 32,
+      "newListings": 18,
+      "countyDaysPending": 9,
+      "mortgageRate": 6.343
+    },
+    {
+      "date": "2023-05",
+      "inventory": 37,
+      "newListings": 22,
+      "countyDaysPending": 8,
+      "mortgageRate": 6.425
+    },
+    {
+      "date": "2023-06",
+      "inventory": 45,
+      "newListings": 24,
+      "countyDaysPending": 8,
+      "mortgageRate": 6.714
+    },
+    {
+      "date": "2023-07",
+      "inventory": 52,
+      "newListings": 24,
+      "countyDaysPending": 10,
+      "mortgageRate": 6.84
+    },
+    {
+      "date": "2023-08",
+      "inventory": 52,
+      "newListings": 22,
+      "countyDaysPending": 11,
+      "mortgageRate": 7.072
+    },
+    {
+      "date": "2023-09",
+      "inventory": 49,
+      "newListings": 21,
+      "countyDaysPending": 12,
+      "mortgageRate": 7.2
+    },
+    {
+      "date": "2023-10",
+      "inventory": 48,
+      "newListings": 25,
+      "countyDaysPending": 12,
+      "mortgageRate": 7.62
+    },
+    {
+      "date": "2023-11",
+      "inventory": 49,
+      "newListings": 22,
+      "countyDaysPending": 12,
+      "mortgageRate": 7.442
+    },
+    {
+      "date": "2023-12",
+      "inventory": 44,
+      "newListings": 16,
+      "countyDaysPending": 15,
+      "mortgageRate": 6.815
+    },
+    {
+      "date": "2024-01",
+      "inventory": 37,
+      "newListings": 12,
+      "countyDaysPending": 15,
+      "mortgageRate": 6.643
+    },
+    {
+      "date": "2024-02",
+      "inventory": 32,
+      "newListings": 11,
+      "countyDaysPending": 14,
+      "mortgageRate": 6.776
+    },
+    {
+      "date": "2024-03",
+      "inventory": 32,
+      "newListings": 14,
+      "countyDaysPending": 10,
+      "mortgageRate": 6.82
+    },
+    {
+      "date": "2024-04",
+      "inventory": 39,
+      "newListings": 18,
+      "countyDaysPending": 9,
+      "mortgageRate": 6.992
+    },
+    {
+      "date": "2024-05",
+      "inventory": 50,
+      "newListings": 28,
+      "countyDaysPending": 9,
+      "mortgageRate": 7.06
+    },
+    {
+      "date": "2024-06",
+      "inventory": 61,
+      "newListings": 30,
+      "countyDaysPending": 9,
+      "mortgageRate": 6.918
+    },
+    {
+      "date": "2024-07",
+      "inventory": 67,
+      "newListings": 29,
+      "countyDaysPending": 11,
+      "mortgageRate": 6.848
+    },
+    {
+      "date": "2024-08",
+      "inventory": 69,
+      "newListings": 25,
+      "countyDaysPending": 12,
+      "mortgageRate": 6.5
+    },
+    {
+      "date": "2024-09",
+      "inventory": 66,
+      "newListings": 22,
+      "countyDaysPending": 13,
+      "mortgageRate": 6.18
+    },
+    {
+      "date": "2024-10",
+      "inventory": 61,
+      "newListings": 20,
+      "countyDaysPending": 14,
+      "mortgageRate": 6.428
+    },
+    {
+      "date": "2024-11",
+      "inventory": 55,
+      "newListings": 17,
+      "countyDaysPending": 15,
+      "mortgageRate": 6.805
+    },
+    {
+      "date": "2024-12",
+      "inventory": 49,
+      "newListings": 16,
+      "countyDaysPending": 18,
+      "mortgageRate": 6.715
+    },
+    {
+      "date": "2025-01",
+      "inventory": 46,
+      "newListings": 16,
+      "countyDaysPending": 18,
+      "mortgageRate": 6.958
+    },
+    {
+      "date": "2025-02",
+      "inventory": 41,
+      "newListings": 14,
+      "countyDaysPending": 15,
+      "mortgageRate": 6.842
+    },
+    {
+      "date": "2025-03",
+      "inventory": 44,
+      "newListings": 18,
+      "countyDaysPending": 10,
+      "mortgageRate": 6.65
+    },
+    {
+      "date": "2025-04",
+      "inventory": 47,
+      "newListings": 22,
+      "countyDaysPending": 9,
+      "mortgageRate": 6.725
+    },
+    {
+      "date": "2025-05",
+      "inventory": 54,
+      "newListings": 26,
+      "countyDaysPending": 9,
+      "mortgageRate": 6.816
+    },
+    {
+      "date": "2025-06",
+      "inventory": 60,
+      "newListings": 29,
+      "countyDaysPending": 11,
+      "mortgageRate": 6.817
+    },
+    {
+      "date": "2025-07",
+      "inventory": 64,
+      "newListings": 27,
+      "countyDaysPending": 12,
+      "mortgageRate": 6.72
+    },
+    {
+      "date": "2025-08",
+      "inventory": 67,
+      "newListings": 26,
+      "countyDaysPending": 15,
+      "mortgageRate": 6.587
+    },
+    {
+      "date": "2025-09",
+      "inventory": 63,
+      "newListings": 19,
+      "countyDaysPending": 15,
+      "mortgageRate": 6.353
+    },
+    {
+      "date": "2025-10",
+      "inventory": 60,
+      "newListings": 20,
+      "countyDaysPending": 15,
+      "mortgageRate": 6.254
+    },
+    {
+      "date": "2025-11",
+      "inventory": 52,
+      "newListings": 17,
+      "countyDaysPending": 15,
+      "mortgageRate": 6.237
+    },
+    {
+      "date": "2025-12",
+      "inventory": 47,
+      "newListings": 16,
+      "countyDaysPending": 18,
+      "mortgageRate": 6.19
+    },
+    {
+      "date": "2026-01",
+      "inventory": 36,
+      "newListings": 10,
+      "countyDaysPending": 19,
+      "mortgageRate": 6.102
+    },
+    {
+      "date": "2026-02",
+      "inventory": 28,
+      "newListings": 8,
+      "countyDaysPending": 17,
+      "mortgageRate": 6.048
+    },
+    {
+      "date": "2026-03",
+      "inventory": 27,
+      "newListings": 12,
+      "countyDaysPending": 12,
+      "mortgageRate": 6.177
+    },
+    {
+      "date": "2026-04",
+      "inventory": 32,
+      "newListings": 17,
+      "countyDaysPending": 10,
+      "mortgageRate": 6.332
+    },
+    {
+      "date": "2026-05",
+      "inventory": 46,
+      "newListings": 27,
+      "countyDaysPending": 10,
+      "mortgageRate": 6.443
+    },
+    {
+      "date": "2026-06",
+      "inventory": 59,
+      "newListings": 30,
+      "countyDaysPending": 11,
+      "mortgageRate": 6.49
+    }
+  ]
+}
