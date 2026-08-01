@@ -3,9 +3,29 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+      target: runner
     restart: unless-stopped
     environment:
       NODE_ENV: production
       PORT: 3000
+      LISTINGS_DATA_PATH: /data/listings.json
+    volumes:
+      - listing_data:/data:ro
     expose:
       - "3000"
+
+  listings-refresher:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: refresher
+    restart: unless-stopped
+    environment:
+      APIFY_TOKEN: ${APIFY_TOKEN:?APIFY_TOKEN is required}
+      DATA_PATH: /data/listings.json
+      REFRESH_INTERVAL_MS: "172800000"
+    volumes:
+      - listing_data:/data
+
+volumes:
+  listing_data:

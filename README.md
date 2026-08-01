@@ -1,6 +1,6 @@
 # Brookfield Market Balance
 
-A transparent buyer-versus-seller housing market indicator for Brookfield, Connecticut. The dashboard uses Zillow Research monthly housing data and the FRED/Freddie Mac 30-year mortgage rate.
+A transparent buyer-versus-seller housing market indicator for Brookfield, Connecticut. The dashboard uses Zillow Research monthly housing data, the FRED/Freddie Mac 30-year mortgage rate, and a live 48-hour snapshot of active Zillow listings under $500K collected through Apify.
 
 ## Method
 
@@ -21,13 +21,17 @@ npm ci
 npm run dev
 ```
 
+The live listing API reads `LISTINGS_DATA_PATH` (default `/data/listings.json`). The production Compose stack includes a dedicated refresher that runs immediately and every 48 hours, writes snapshots atomically to a shared volume, and preserves the last valid snapshot on failure. Configure `APIFY_TOKEN` only in the deployment environment; never expose it to the browser or commit it.
+
 ## Refresh raw data
 
 ```bash
 npm run refresh-data
 ```
 
-The refresh script downloads the Zillow city/county CSVs and FRED weekly series, computes monthly mortgage averages, and writes only raw common observations to `app/data/market-data.json`. The indicator itself is computed in `app/market-dashboard.tsx`.
+The market-data refresh script downloads the Zillow city/county CSVs and FRED weekly series, computes monthly mortgage averages, and writes only raw common observations to `app/data/market-data.json`. The indicator itself is computed in `app/market-dashboard.tsx`.
+
+`scripts/listings-refresher.mjs` separately runs the Apify Zillow Search Scraper for Zillow region `23843`, validates exact Brookfield/CT geography, active for-sale status, supported home types, and a maximum $500K price, then writes a minimal public snapshot without exposing the Apify token.
 
 ## Verify
 

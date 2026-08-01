@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import {
   Area,
   CartesianGrid,
@@ -12,7 +12,7 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
-import { ArrowDown, ArrowUp, DownloadSimple, Info, MapPin, TrendUp } from "@phosphor-icons/react";
+import { ArrowDown, ArrowSquareOut, ArrowUp, Clock, DownloadSimple, Info, MapPin, TrendUp } from "@phosphor-icons/react";
 
 type Observation = {
   date: string;
@@ -37,6 +37,29 @@ type ScoredObservation = Observation & {
   scarcityScore: number;
   velocityScore: number;
   marketScore: number;
+};
+
+type Listing = {
+  id: string;
+  url: string;
+  image: string | null;
+  address: string;
+  price: number;
+  priceFormatted: string;
+  beds: number | null;
+  baths: number | null;
+  area: number | null;
+  daysOnZillow: number | null;
+  homeType: string;
+  statusText: string;
+  priceReduction: string | null;
+  broker: string | null;
+};
+
+type ListingsPayload = {
+  status: "ready" | "initializing";
+  fetchedAt: string | null;
+  listings: Listing[];
 };
 
 const rangeOptions = [
@@ -119,10 +142,35 @@ function CustomTooltip({ active, payload }: { active?: boolean; payload?: Array<
 export function MarketDashboard({ data }: { data: MarketData }) {
   const scored = useMemo(() => scoreObservations(data.observations), [data.observations]);
   const [range, setRange] = useState(60);
+  const [listings, setListings] = useState<ListingsPayload | null>(null);
+  const [listingsError, setListingsError] = useState(false);
   const visible = range === Infinity ? scored : scored.slice(-range);
   const latest = scored.at(-1)!;
   const priorYear = scored.find((point) => point.date === `${Number(latest.date.slice(0, 4)) - 1}${latest.date.slice(4)}`);
   const scoreDelta = priorYear ? latest.marketScore - priorYear.marketScore : 0;
+
+  useEffect(() => {
+    let active = true;
+    const load = async () => {
+      try {
+        const response = await fetch("/api/listings", { cache: "no-store" });
+        if (!response.ok) throw new Error(`Listings returned ${response.status}`);
+        const payload = await response.json() as ListingsPayload;
+        if (active) {
+          setListings(payload);
+          setListingsError(false);
+        }
+      } catch {
+        if (active) setListingsError(true);
+      }
+    };
+    load();
+    const timer = window.setInterval(load, 5 * 60 * 1000);
+    return () => {
+      active = false;
+      window.clearInterval(timer);
+    };
+  }, []);
 
   function downloadCsv() {
     const header = "date,market_score,mortgage_rate,inventory,new_listings,stock_to_flow,inventory_yoy_pct,county_days_pending";
@@ -223,6 +271,45 @@ export function MarketDashboard({ data }: { data: MarketData }) {
           </article>
         </section>
 
+        <section className="listings-section" aria-labelledby="listings-title">
+          <div className="listings-heading">
+            <div>
+              <h2 id="listings-title">Homes under $500K right now</h2>
+              <p>Active Brookfield listings, refreshed every 48 hours and linked to their Zillow source.</p>
+            </div>
+            {listings?.status === "ready" && <div className="listings-freshness"><Clock size={15} /> Checked {new Date(listings.fetchedAt!).toLocaleString("en-US", { month: "short", day: "numeric", hour: "numeric", minute: "2-digit" })}</div>}
+          </div>
+
+          {!listings && !listingsError && <div className="listing-skeletons" aria-label="Loading current listings"><i /><i /><i /></div>}
+          {(listingsError || listings?.status === "initializing") && <div className="listings-empty"><strong>{listingsError ? "Current listings are temporarily unavailable." : "The first listing refresh is running."}</strong><p>The market dashboard remains available. The previous good snapshot will be retained after future refresh failures.</p></div>}
+          {listings?.status === "ready" && listings.listings.length > 0 && (
+            <>
+              <div className="listing-count"><strong>{listings.listings.length}</strong> matching homes found</div>
+              <div className="listing-grid">
+                {listings.listings.map((listing) => (
+                  <a className="listing-card" href={listing.url} target="_blank" rel="noopener noreferrer" key={listing.id}>
+                    <div className="listing-image">
+                      {listing.image ? <img src={listing.image} alt={`Listing at ${listing.address}`} loading="lazy" referrerPolicy="no-referrer" /> : <span>Photo unavailable</span>}
+                      <em>{listing.statusText}</em>
+                    </div>
+                    <div className="listing-body">
+                      <div className="listing-price"><strong>{listing.priceFormatted}</strong><ArrowSquareOut size={18} /></div>
+                      <p>{listing.address}</p>
+                      <div className="listing-facts">
+                        {listing.beds != null && <span><b>{listing.beds}</b> bd</span>}
+                        {listing.baths != null && <span><b>{listing.baths}</b> ba</span>}
+                        {listing.area != null && <span><b>{listing.area.toLocaleString()}</b> sq ft</span>}
+                      </div>
+                      <div className="listing-meta"><span>{listing.daysOnZillow == null ? "New listing" : `${listing.daysOnZillow} ${listing.daysOnZillow === 1 ? "day" : "days"} on Zillow`}</span><span>{listing.broker || "Broker listed"}</span></div>
+                    </div>
+                  </a>
+                ))}
+              </div>
+              <p className="listing-disclaimer">Listings are collected from publicly visible Zillow search results through Apify. Availability, price, details, and photos can change; verify everything on the linked source before acting. Zillow and listing photos belong to their respective owners.</p>
+            </>
+          )}
+        </section>
+
         <section className="methodology" id="methodology">
           <div className="method-intro">
             <h2>Methodology you can audit</h2>
@@ -246,7 +333,8 @@ export function MarketDashboard({ data }: { data: MarketData }) {
           <div className="source-grid">
             <div><b>Zillow Research</b><p>Smoothed monthly inventory and new-listing series for Brookfield, plus county days to pending.</p><a href="https://www.zillow.com/research/data/" target="_blank" rel="noreferrer">Open Zillow data</a></div>
             <div><b>FRED / Freddie Mac</b><p>Weekly U.S. 30-year fixed mortgage rate, averaged by calendar month in the data refresh script.</p><a href="https://fred.stlouisfed.org/series/MORTGAGE30US" target="_blank" rel="noreferrer">Open FRED series</a></div>
-            <div><b>Important context</b><p>Brookfield's small sample can be volatile. Zillow suppresses most city-level days-to-pending history, so Fairfield County is the disclosed velocity proxy. This is decision support, not an appraisal or forecast.</p></div>
+            <div><b>Current Zillow listings via Apify</b><p>A hosted Zillow search scraper refreshes active Brookfield homes under $500K every 48 hours. The last valid snapshot survives failed refreshes.</p><a href="https://apify.com/maxcopell/zillow-scraper" target="_blank" rel="noreferrer">Review the scraper</a></div>
+            <div><b>Important context</b><p>Brookfield's small sample can be volatile. Zillow suppresses most city-level days-to-pending history, so Fairfield County is the disclosed velocity proxy. Listings are unofficial scraped results and must be verified at source. This is decision support, not an appraisal or forecast.</p></div>
           </div>
           <p className="refresh-note">Raw snapshot refreshed {new Date(data.fetchedAt).toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric", timeZone: "UTC" })}. Common observations run through {monthLabel(latest.date, true)}.</p>
         </section>

@@ -10,6 +10,12 @@ COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 RUN npm run build
 
+FROM node:22-alpine AS refresher
+WORKDIR /app
+ENV DATA_PATH=/data/listings.json REFRESH_INTERVAL_MS=172800000
+COPY scripts/listings-refresher.mjs ./scripts/listings-refresher.mjs
+CMD ["node", "scripts/listings-refresher.mjs"]
+
 FROM node:22-alpine AS runner
 WORKDIR /app
 ENV NODE_ENV=production NEXT_TELEMETRY_DISABLED=1 PORT=3000 HOSTNAME=0.0.0.0
