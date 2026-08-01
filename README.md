@@ -33,6 +33,19 @@ The market-data refresh script downloads the Zillow city/county CSVs and FRED we
 
 `scripts/listings-refresher.mjs` separately runs the Apify Zillow Search Scraper for Zillow region `23843`, validates exact Brookfield/CT geography, active for-sale status, supported home types, and a maximum $500K price, then writes a minimal public snapshot without exposing the Apify token.
 
+## Weekly production check
+
+Headquarters runs `ops/weekly-refresh.sh` every Friday at 8:00am America/New_York. It:
+
+- refreshes Zillow/FRED market history and ignores `fetchedAt`-only changes;
+- validates that observations do not shrink or regress;
+- verifies that the live listings snapshot is less than 72 hours old;
+- commits, pushes, deploys, and verifies production only when market observations change;
+- detects weekly changes in the already-live 48-hour listings feed; and
+- creates a persistent X Agent Console notification with the dashboard link for updated, unchanged, and failed checks.
+
+The host cron uses `flock`; reruns cannot overlap.
+
 ## Verify
 
 ```bash
