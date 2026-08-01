@@ -6,7 +6,7 @@ DASHBOARD_URL=https://brookfield-market.187.77.218.3.sslip.io
 COMPOSE_ID=GMbqw9OOkOdn0CX7yz6xs
 STATE_DIR=/root/.local/state/x-agent-brookfield-market
 LISTING_STATE="$STATE_DIR/listings.sha256"
-NOTIFIER=/root/bin/x-agent-console-notify.sh
+NOTIFIER="$PROJECT_DIR/ops/x-agent-console-notify.sh"
 
 mkdir -p "$STATE_DIR"
 cd "$PROJECT_DIR"
