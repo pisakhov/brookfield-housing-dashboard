@@ -7,6 +7,7 @@ import {
   ComposedChart,
   Line,
   ReferenceArea,
+  ReferenceLine,
   ResponsiveContainer,
   Tooltip,
   XAxis,
@@ -141,13 +142,15 @@ function CustomTooltip({ active, payload }: { active?: boolean; payload?: Array<
 
 export function MarketDashboard({ data }: { data: MarketData }) {
   const scored = useMemo(() => scoreObservations(data.observations), [data.observations]);
-  const [range, setRange] = useState(60);
+  const [range, setRange] = useState(Infinity);
   const [listings, setListings] = useState<ListingsPayload | null>(null);
   const [listingsError, setListingsError] = useState(false);
   const visible = range === Infinity ? scored : scored.slice(-range);
   const latest = scored.at(-1)!;
   const priorYear = scored.find((point) => point.date === `${Number(latest.date.slice(0, 4)) - 1}${latest.date.slice(4)}`);
   const scoreDelta = priorYear ? latest.marketScore - priorYear.marketScore : 0;
+  const sellerExtreme = scored.reduce((strongest, point) => point.marketScore > strongest.marketScore ? point : strongest);
+  const buyerExtreme = scored.reduce((strongest, point) => point.marketScore < strongest.marketScore ? point : strongest);
 
   useEffect(() => {
     let active = true;
@@ -231,6 +234,8 @@ export function MarketDashboard({ data }: { data: MarketData }) {
                 </defs>
                 <ReferenceArea y1={61} y2={100} fill="#de6248" fillOpacity={0.035} />
                 <ReferenceArea y1={0} y2={39} fill="#167f82" fillOpacity={0.035} />
+                <ReferenceLine x={sellerExtreme.date} stroke="#de6248" strokeOpacity={0.5} strokeDasharray="3 4" />
+                <ReferenceLine x={buyerExtreme.date} stroke="#167f82" strokeOpacity={0.5} strokeDasharray="3 4" />
                 <CartesianGrid vertical={false} stroke="var(--line)" strokeDasharray="2 5" />
                 <XAxis dataKey="date" ticks={visible.filter((point) => point.date.endsWith("-01")).map((point) => point.date)} tickFormatter={(value) => value.slice(0, 4)} axisLine={false} tickLine={false} tick={{ fill: "var(--muted)", fontSize: 11 }} />
                 <YAxis yAxisId="market" domain={[0, 100]} ticks={[0, 25, 50, 75, 100]} axisLine={false} tickLine={false} width={34} tick={{ fill: "var(--muted)", fontSize: 11 }} />
@@ -242,6 +247,19 @@ export function MarketDashboard({ data }: { data: MarketData }) {
             </ResponsiveContainer>
           </div>
           <div className="chart-axis-labels"><span>0 = buyer-favorable</span><span>100 = seller-favorable</span></div>
+          <div className="extreme-strip" aria-label="Historical market extremes">
+            <div className="extreme buyer-extreme">
+              <span>Most buyer-favorable month</span>
+              <div><strong>{monthLabel(buyerExtreme.date, true)}</strong><b>{buyerExtreme.marketScore.toFixed(0)}<small>/100</small></b></div>
+              <p>{buyerExtreme.inventory} homes for sale · {buyerExtreme.countyDaysPending} days to pending · {buyerExtreme.mortgageRate.toFixed(2)}% mortgage</p>
+            </div>
+            <div className="extreme seller-extreme">
+              <span>Most seller-favorable month</span>
+              <div><strong>{monthLabel(sellerExtreme.date, true)}</strong><b>{sellerExtreme.marketScore.toFixed(0)}<small>/100</small></b></div>
+              <p>{sellerExtreme.inventory} homes for sale · {sellerExtreme.countyDaysPending} days to pending · {sellerExtreme.mortgageRate.toFixed(2)}% mortgage</p>
+            </div>
+          </div>
+          <p className="extreme-note">Extremes are calculated across the complete scored history from {monthLabel(scored[0].date, true)} through {monthLabel(latest.date, true)}.</p>
         </section>
 
         <section className="metrics" aria-label="Latest market inputs">

@@ -89,6 +89,17 @@ a { color: inherit; }
 .chart-tooltip span { color: var(--muted); }
 .chart-tooltip b { text-align: right; font-weight: 600; }
 .chart-axis-labels { display: flex; justify-content: space-between; margin: 2px 40px 0 36px; color: var(--muted); font: 500 10px var(--font-geist-mono), monospace; }
+.extreme-strip { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; margin-top: 28px; background: var(--line); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.extreme { padding: 19px 18px 17px; background: var(--surface); }
+.extreme > span { color: var(--muted); font: 600 10px var(--font-geist-mono), monospace; text-transform: uppercase; letter-spacing: .07em; }
+.extreme > div { display: flex; align-items: baseline; justify-content: space-between; gap: 18px; margin-top: 12px; }
+.extreme strong { font-size: 20px; letter-spacing: -.035em; }
+.extreme b { font: 600 28px/1 var(--font-geist-mono), monospace; letter-spacing: -.055em; }
+.extreme small { margin-left: 3px; color: var(--muted); font-size: 10px; letter-spacing: 0; }
+.extreme p { margin: 10px 0 0; color: var(--muted); font-size: 10px; line-height: 1.5; }
+.buyer-extreme b { color: var(--teal); }
+.seller-extreme b { color: var(--coral); }
+.extreme-note { margin: 10px 18px 0; color: var(--muted); font: 500 9px/1.5 var(--font-geist-mono), monospace; }
 
 .metrics { display: grid; grid-template-columns: repeat(4, 1fr); margin: 18px 0 92px; border: 1px solid var(--line); border-radius: 16px; overflow: hidden; background: var(--surface); }
 .metrics article { padding: 24px; border-right: 1px solid var(--line); }
@@ -179,6 +190,12 @@ footer a { text-underline-offset: 3px; }
   .range-control { width: fit-content; margin-top: 20px; }
   .chart-wrap { height: 330px; margin-left: -8px; }
   .chart-axis-labels { margin: 5px 30px 0 28px; font-size: 9px; }
+  .extreme-strip { grid-template-columns: 1fr; }
+  .extreme { padding: 17px 8px; }
+  .extreme > div { margin-top: 9px; }
+  .extreme strong { font-size: 18px; }
+  .extreme p { font-size: 9px; }
+  .extreme-note { margin-inline: 8px; }
   .metrics { margin-bottom: 72px; }
   .metrics article { padding: 20px 16px; }
   .metrics strong { font-size: 30px; }
