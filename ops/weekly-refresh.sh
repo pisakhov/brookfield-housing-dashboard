@@ -12,6 +12,7 @@ mkdir -p "$STATE_DIR"
 cd "$PROJECT_DIR"
 
 notified=0
+ephemeral_dependencies=0
 start_sha=$(git rev-parse HEAD)
 backup=$(mktemp)
 cp app/data/market-data.json "$backup"
@@ -32,6 +33,10 @@ cleanup() {
     if [[ $notified -eq 0 ]]; then
       notify "The weekly Brookfield dashboard refresh hit an error and needs attention. The last valid dashboard remains available: [Open the Brookfield dashboard]($DASHBOARD_URL)" || true
     fi
+  fi
+  rm -rf .next/cache
+  if [[ $ephemeral_dependencies -eq 1 ]]; then
+    rm -rf node_modules .next
   fi
   rm -f "$backup"
   exit "$rc"
@@ -109,6 +114,10 @@ printf '%s\n' "$listing_hash" > "$LISTING_STATE"
 if [[ $market_changed == false ]]; then
   cp "$backup" app/data/market-data.json
 else
+  if [[ ! -x node_modules/.bin/next ]]; then
+    npm ci
+    ephemeral_dependencies=1
+  fi
   npm run typecheck
   npm test
   npm run build

@@ -104,7 +104,8 @@ Headquarters runs `ops/weekly-refresh.sh` every Friday at 8:00am America/New_Yor
 - compares semantic geography, source, notes, series, and forecast content while ignoring `fetchedAt`-only changes;
 - rejects history shrinkage, latest-month regression, and forecast-base regression;
 - verifies that the production listing snapshot is less than 72 hours old;
-- runs typecheck, calculation tests, production build, and production dependency audit before deploying changed source history;
+- installs locked dependencies on demand, runs typecheck, calculation tests, production build, and production dependency audit before deploying changed source history;
+- removes ephemeral dependencies and Next build cache after the run when it installed them, protecting the space-constrained Headquarters disk;
 - commits and pushes only reviewed semantic data changes;
 - deploys the existing Dokploy Compose service without replacing its listing volume or environment secrets;
 - verifies all six live routes and the listing API after deployment; and
