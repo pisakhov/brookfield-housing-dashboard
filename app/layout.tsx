@@ -4,14 +4,10 @@ import { GeistMono } from "geist/font/mono";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Brookfield Market Balance",
-  description: "A transparent seller versus buyer market indicator for Brookfield, Connecticut, built from Zillow and FRED data.",
+  title: { default: "Brookfield Buyer Decision Suite", template: "%s | Brookfield Buyer Suite" },
+  description: "Six transparent Brookfield, Connecticut housing indicators built from official Zillow Research and FRED/Freddie Mac data.",
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return (
-    <html lang="en" className={`${GeistSans.variable} ${GeistMono.variable}`}>
-      <body>{children}</body>
-    </html>
-  );
+  return <html lang="en" className={`${GeistSans.variable} ${GeistMono.variable}`}><body>{children}</body></html>;
 }

@@ -33,19 +33,25 @@ body { margin: 0; background: var(--bg); color: var(--text); font-family: var(--
 button, a { font: inherit; }
 a { color: inherit; }
 
+.site-header { position: sticky; top: 0; z-index: 20; background: color-mix(in srgb, var(--bg) 94%, transparent); border-bottom: 1px solid var(--line); backdrop-filter: blur(14px); }
 .topbar {
-  height: 68px;
+  height: 58px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   max-width: 1320px;
   margin: 0 auto;
   padding: 0 32px;
-  border-bottom: 1px solid var(--line);
 }
 .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; font-weight: 650; letter-spacing: -0.02em; }
 .brand-mark { display: grid; place-items: center; width: 32px; height: 32px; color: var(--surface); background: var(--text); border-radius: 10px; }
 .location { display: flex; align-items: center; gap: 6px; color: var(--muted); font-size: 14px; }
+.suite-nav { border-top: 1px solid var(--line); }
+.suite-nav-inner { display: flex; align-items: center; gap: 4px; max-width: 1260px; min-width: max-content; height: 46px; margin: 0 auto; padding: 0 28px; }
+.suite-nav a { position: relative; padding: 9px 12px; color: var(--muted); border-radius: 9px; text-decoration: none; white-space: nowrap; font: 570 12px/1 var(--font-geist-sans), sans-serif; transition: color .18s ease, background .18s ease; }
+.suite-nav a:hover { color: var(--text); background: var(--surface-2); }
+.suite-nav a[aria-current="page"] { color: var(--text); background: var(--surface); box-shadow: inset 0 0 0 1px var(--line); }
+.suite-nav a:focus-visible, button:focus-visible, a:focus-visible { outline: 3px solid color-mix(in srgb, var(--teal) 62%, transparent); outline-offset: 3px; }
 .shell { max-width: 1260px; margin: 0 auto; padding: 0 28px 96px; }
 
 .hero { min-height: 520px; display: grid; grid-template-columns: 1.25fr .75fr; gap: 9vw; align-items: center; padding: 72px 0 64px; }
@@ -60,6 +66,7 @@ a { color: inherit; }
 .score-row span { margin-left: 7px; color: var(--muted); font: 500 15px var(--font-geist-mono), monospace; }
 .score-panel h2 { margin: 22px 0 7px; font-size: 24px; letter-spacing: -.035em; }
 .score-panel p { margin: 0 0 12px; color: var(--muted); font-size: 14px; line-height: 1.45; }
+.score-disclaimer { display: block; margin-top: 18px; padding-top: 14px; border-top: 1px solid var(--line); color: var(--muted); font-size: 10px; line-height: 1.45; }
 .delta { display: inline-flex; align-items: center; gap: 3px; padding: 5px 8px; border-radius: 999px; font: 600 11px var(--font-geist-mono), monospace; }
 .delta.positive { color: var(--green); background: color-mix(in srgb, var(--green) 11%, transparent); }
 .delta.negative { color: var(--red); background: color-mix(in srgb, var(--red) 11%, transparent); }
@@ -102,6 +109,13 @@ a { color: inherit; }
 .extreme-note { margin: 10px 18px 0; color: var(--muted); font: 500 9px/1.5 var(--font-geist-mono), monospace; }
 
 .metrics { display: grid; grid-template-columns: repeat(4, 1fr); margin: 18px 0 92px; border: 1px solid var(--line); border-radius: 16px; overflow: hidden; background: var(--surface); }
+.decision-hero { min-height: 500px; }
+.decision-hero h1 { max-width: 720px; font-size: clamp(50px, 6.4vw, 82px); line-height: .94; }
+.decision-chart { margin-top: 0; }
+.decision-metrics article > span:first-child { min-height: 34px; }
+.composition-chart { height: 330px; }
+.source-grid a { display: inline-flex; align-items: center; gap: 5px; }
+.method-intro p { max-width: 42ch; }
 .metrics article { padding: 24px; border-right: 1px solid var(--line); }
 .metrics article:last-child { border-right: 0; }
 .metrics article > span:first-child { display: block; min-height: 32px; color: var(--muted); font-size: 12px; }
@@ -178,10 +192,17 @@ footer a { text-underline-offset: 3px; }
 }
 
 @media (max-width: 700px) {
-  .topbar { height: 60px; padding: 0 18px; }
+  .site-header { backdrop-filter: blur(12px); }
+  .topbar { height: 56px; padding: 0 18px; }
+  .brand { font-size: 14px; }
+  .suite-nav { overflow-x: auto; scrollbar-width: none; }
+  .suite-nav::-webkit-scrollbar { display: none; }
+  .suite-nav-inner { height: 45px; padding: 0 12px; }
+  .suite-nav a { padding: 9px 10px; font-size: 11px; }
   .shell { padding: 0 16px 70px; }
   .hero { min-height: auto; grid-template-columns: 1fr; gap: 38px; padding: 50px 0 44px; }
-  .hero h1 { font-size: clamp(53px, 16vw, 72px); }
+  .hero h1 { font-size: clamp(48px, 14vw, 68px); }
+  .decision-hero h1 { font-size: clamp(46px, 13vw, 64px); line-height: .97; }
   .hero-copy { margin-top: 22px; font-size: 16px; }
   .score-panel { padding: 24px; }
   .chart-section { padding: 25px 14px 18px; }

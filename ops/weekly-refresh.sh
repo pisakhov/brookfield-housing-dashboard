@@ -51,23 +51,26 @@ fi
 
 npm run refresh-data
 
+npm run validate-data
+
 comparison=$(node - "$backup" <<'NODE'
 const fs = require('fs');
 const oldData = JSON.parse(fs.readFileSync(process.argv[2]));
 const newData = JSON.parse(fs.readFileSync('app/data/market-data.json'));
-const oldRows = oldData.observations;
-const newRows = newData.observations;
-if (!Array.isArray(newRows) || newRows.length < oldRows.length || !newRows.length) {
-  throw new Error(`invalid observation count: ${oldRows.length} -> ${newRows?.length}`);
+if (newData.schemaVersion !== 2 || !newData.series || !newData.forecast) throw new Error('unexpected refreshed schema');
+for (const key of ['market', 'priceCuts', 'homeValues', 'saleToList', 'ownership']) {
+  const before = oldData.series?.[key];
+  const after = newData.series[key];
+  if (!Array.isArray(before) || !Array.isArray(after) || !after.length) throw new Error(`${key}: missing history`);
+  if (after.length < before.length) throw new Error(`${key}: history shrank ${before.length} -> ${after.length}`);
+  if (after.at(-1).date < before.at(-1).date) throw new Error(`${key}: latest month regressed ${before.at(-1).date} -> ${after.at(-1).date}`);
 }
-const valid = newRows.every((row) => /^\d{4}-\d{2}$/.test(row.date)
-  && ['inventory', 'newListings', 'countyDaysPending', 'mortgageRate'].every((key) => Number.isFinite(row[key])));
-if (!valid) throw new Error('refreshed observations failed validation');
-const oldLast = oldRows.at(-1).date;
-const newLast = newRows.at(-1).date;
-if (newLast < oldLast) throw new Error(`latest month regressed: ${oldLast} -> ${newLast}`);
-const changed = JSON.stringify(oldRows) !== JSON.stringify(newRows);
-process.stdout.write(JSON.stringify({changed, oldLast, newLast, oldCount: oldRows.length, newCount: newRows.length}));
+if (newData.forecast.baseDate < oldData.forecast.baseDate) throw new Error(`forecast base regressed ${oldData.forecast.baseDate} -> ${newData.forecast.baseDate}`);
+const semantic = (data) => JSON.stringify({geography: data.geography, sources: data.sources, notes: data.notes, series: data.series, forecast: data.forecast});
+const changed = semantic(oldData) !== semantic(newData);
+const oldLast = oldData.series.market.at(-1).date;
+const newLast = newData.series.market.at(-1).date;
+process.stdout.write(JSON.stringify({changed, oldLast, newLast, forecastBase: newData.forecast.baseDate, seriesCounts: Object.fromEntries(Object.entries(newData.series).map(([key, rows]) => [key, rows.length]))}));
 NODE
 )
 
@@ -80,9 +83,15 @@ listing_summary=$(node - "$listing_json" <<'NODE'
 const fs = require('fs');
 const crypto = require('crypto');
 const data = JSON.parse(fs.readFileSync(process.argv[2]));
-if (!Array.isArray(data.listings) || !data.fetchedAt) throw new Error('invalid listing snapshot');
+if (!Array.isArray(data.listings) || !data.fetchedAt || data.status !== 'ready') throw new Error('invalid listing snapshot');
+if (data.filter?.city !== 'Brookfield' || data.filter?.state !== 'CT' || data.filter?.maximumPrice !== 500000) throw new Error('listing snapshot filter mismatch');
 const ageMs = Date.now() - Date.parse(data.fetchedAt);
-if (!Number.isFinite(ageMs) || ageMs > 72 * 60 * 60 * 1000) throw new Error('listing snapshot is older than 72 hours');
+if (!Number.isFinite(ageMs) || ageMs < 0 || ageMs > 72 * 60 * 60 * 1000) throw new Error('listing snapshot is older than 72 hours');
+const ids = new Set();
+for (const row of data.listings) {
+  if (!row.id || ids.has(String(row.id)) || !Number.isFinite(row.price) || row.price <= 0 || row.price > 500000 || !/^https:\/\/www\.zillow\.com\//.test(row.url || '')) throw new Error('listing snapshot row failed validation');
+  ids.add(String(row.id));
+}
 const stable = [...data.listings].sort((a,b) => String(a.id).localeCompare(String(b.id)));
 const hash = crypto.createHash('sha256').update(JSON.stringify(stable)).digest('hex');
 process.stdout.write(JSON.stringify({hash, count: stable.length, fetchedAt: data.fetchedAt}));
@@ -101,7 +110,9 @@ if [[ $market_changed == false ]]; then
   cp "$backup" app/data/market-data.json
 else
   npm run typecheck
+  npm test
   npm run build
+  npm audit --omit=dev
   git add app/data/market-data.json
   git commit -m "Refresh market data through $latest_month"
   git push origin main
@@ -144,8 +155,19 @@ NODE
     echo "Dokploy deployment did not complete in ten minutes" >&2
     exit 1
   fi
-  live_html=$(curl --fail --silent --show-error --retry 10 --retry-delay 6 "$DASHBOARD_URL")
-  grep -Fq "$latest_month" <<<"$live_html"
+  declare -A route_checks=(
+    [/]="Who has the"
+    [/offer-leverage]="How much can an offer push"
+    [/budget-reach]="What does \$500K reach"
+    [/affordability-stress]="How hard is the monthly carry"
+    [/buy-vs-rent]="How high is the buy hurdle"
+    [/buy-now-vs-wait]="Buy now, or wait"
+  )
+  for route in "${!route_checks[@]}"; do
+    live_html=$(curl --fail --silent --show-error --retry 10 --retry-delay 6 "$DASHBOARD_URL$route")
+    grep -Fq "${route_checks[$route]}" <<<"$live_html"
+    grep -Fq "Zillow does not publish this score" <<<"$live_html" || [[ $route == / ]]
+  done
 fi
 
 if [[ $market_changed == true || $listing_changed == true ]]; then

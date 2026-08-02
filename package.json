@@ -4,13 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "tsx --test tests/*.test.ts",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
     "typecheck": "tsc --noEmit",
-    "refresh-data": "node scripts/refresh-data.mjs"
+    "refresh-data": "node scripts/refresh-data.mjs",
+    "validate-data": "node scripts/validate-data.mjs"
   },
   "keywords": [],
   "author": "",
@@ -29,6 +30,7 @@
     "@types/react-dom": "^19.1.9",
     "eslint": "^9.36.0",
     "eslint-config-next": "^15.5.7",
+    "tsx": "^4.23.4",
     "typescript": "^5.9.3"
   },
   "private": "true",
