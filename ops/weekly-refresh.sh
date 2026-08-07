@@ -13,10 +13,11 @@ cd "$PROJECT_DIR"
 
 notified=0
 ephemeral_dependencies=0
-start_sha=$(git rev-parse HEAD)
-backup=$(mktemp)
-cp app/data/market-data.json "$backup"
+start_sha=
+backup=
 pushed=0
+commit_created=0
+market_data_touched=0
 
 notify() {
   local message=$1
@@ -27,8 +28,11 @@ notify() {
 cleanup() {
   local rc=$?
   if [[ $rc -ne 0 ]]; then
-    if [[ $pushed -eq 0 ]]; then
-      git reset --hard "$start_sha" >/dev/null 2>&1 || true
+    if [[ $pushed -eq 0 && $commit_created -eq 1 ]]; then
+      git reset --mixed "$start_sha" >/dev/null 2>&1 || true
+    fi
+    if [[ $pushed -eq 0 && $market_data_touched -eq 1 && -n $backup ]]; then
+      cp "$backup" app/data/market-data.json || true
     fi
     if [[ $notified -eq 0 ]]; then
       notify "The weekly Brookfield dashboard refresh hit an error and needs attention. The last valid dashboard remains available: [Open the Brookfield dashboard]($DASHBOARD_URL)" || true
@@ -38,15 +42,24 @@ cleanup() {
   if [[ $ephemeral_dependencies -eq 1 ]]; then
     rm -rf node_modules .next
   fi
-  rm -f "$backup"
+  if [[ -n $backup ]]; then
+    rm -f "$backup"
+  fi
   exit "$rc"
 }
 trap cleanup EXIT
 
-if [[ -n $(git status --porcelain) ]]; then
-  echo "Refusing to refresh a dirty checkout" >&2
+dirty=$(git status --porcelain --untracked-files=all)
+if [[ -n $dirty ]]; then
+  echo "Refusing to refresh a dirty checkout:" >&2
+  printf '%s\n' "$dirty" >&2
+  notify "The weekly Brookfield dashboard refresh was skipped because its checkout contains uncommitted files. Nothing was reset or deployed; the last valid dashboard remains available: [Open the Brookfield dashboard]($DASHBOARD_URL)" || true
   exit 1
 fi
+
+start_sha=$(git rev-parse HEAD)
+backup=$(mktemp)
+cp app/data/market-data.json "$backup"
 
 root_usage=$(df -P / | awk 'NR==2 {gsub(/%/, "", $5); print $5}')
 if (( root_usage >= 95 )); then
@@ -54,6 +67,7 @@ if (( root_usage >= 95 )); then
   exit 1
 fi
 
+market_data_touched=1
 npm run refresh-data
 
 npm run validate-data
@@ -124,7 +138,8 @@ else
   npm audit --omit=dev
   git add app/data/market-data.json
   git commit -m "Refresh market data through $latest_month"
-  git push origin main
+  commit_created=1
+  git push origin HEAD:main
   pushed=1
 
   pg=$(docker ps --format '{{.Names}}' | grep -E '^dokploy-postgres\.1\.' | head -1)
