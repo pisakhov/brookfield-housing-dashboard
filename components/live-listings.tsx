@@ -21,7 +21,7 @@ type Listing = {
 
 type ListingsPayload = { status: "ready" | "initializing"; fetchedAt: string | null; listings: Listing[] };
 
-export function LiveListings({ compact = false }: { compact?: boolean }) {
+export function LiveListings({ city, compact = false }: { city: string; compact?: boolean }) {
   const [payload, setPayload] = useState<ListingsPayload | null>(null);
   const [error, setError] = useState(false);
 
@@ -48,7 +48,7 @@ export function LiveListings({ compact = false }: { compact?: boolean }) {
       <div className="listings-heading">
         <div>
           <h2 id="listings-title">Homes under $500K right now</h2>
-          <p>Live Brookfield search results, refreshed every 48 hours and linked to Zillow.</p>
+          <p>Live {city} search results, refreshed every 48 hours and linked to Zillow.</p>
         </div>
         {payload?.status === "ready" && payload.fetchedAt && (
           <div className="listings-freshness"><Clock size={15} /> Checked {new Date(payload.fetchedAt).toLocaleString("en-US", { month: "short", day: "numeric", hour: "numeric", minute: "2-digit" })}</div>

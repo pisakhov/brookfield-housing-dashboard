@@ -1,9 +1,13 @@
 import type { Metadata } from "next";
-import marketData from "../data/market-data.json";
+import { getCurrentMarket } from "@/lib/current-market";
 import { DecisionDashboard } from "../decision-dashboard";
 
-export const metadata: Metadata = { title: "Under-$500K Budget Reach", description: "See how a $500K ceiling compares with Brookfield bottom- and middle-tier Zillow Home Value Index observations." };
+export function generateMetadata(): Metadata {
+  const { config } = getCurrentMarket();
+  return { title: "Under-$500K Budget Reach", description: `See how a $500K ceiling compares with ${config.city.name} bottom- and middle-tier Zillow Home Value Index observations.` };
+}
 
 export default function BudgetReachPage() {
-  return <DecisionDashboard kind="budget" data={marketData} />;
+  const { data } = getCurrentMarket();
+  return <DecisionDashboard kind="budget" data={data} />;
 }

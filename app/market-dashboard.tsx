@@ -39,6 +39,10 @@ function CustomTooltip({ active, payload }: { active?: boolean; payload?: Array<
 }
 
 export function MarketDashboard({ data }: { data: MarketData }) {
+  const city = data.geography.city.name;
+  const county = data.geography.countyProxy.name;
+  const newListingsGeography = data.geography.newListings.name;
+  const newListingsAreLocal = data.geography.newListings.zillowRegionId === data.geography.city.zillowRegionId;
   const scored = useMemo(() => scoreMarket(data.series.market), [data.series.market]);
   const [range, setRange] = useState(Infinity);
   const visible = range === Infinity ? scored : scored.slice(-range);
@@ -54,20 +58,20 @@ export function MarketDashboard({ data }: { data: MarketData }) {
     const url = URL.createObjectURL(new Blob([[header, ...rows].join("\n")], { type: "text/csv" }));
     const anchor = document.createElement("a");
     anchor.href = url;
-    anchor.download = "brookfield-market-balance.csv";
+    anchor.download = `${city.toLowerCase()}-market-balance.csv`;
     anchor.click();
     URL.revokeObjectURL(url);
   }
 
   return (
     <main>
-      <SiteHeader />
+      <SiteHeader city={city} />
       <div className="shell" id="top">
         <section className="hero">
           <div>
             <p className="eyebrow">BUYER / SELLER MARKET INDICATOR | UPDATED {monthLabel(latest.date).toUpperCase()}</p>
             <h1>Who has the<br />upper hand?</h1>
-            <p className="hero-copy">A transparent Brookfield market signal, with mortgage rates in the same view.</p>
+            <p className="hero-copy">A transparent {city} market signal, with mortgage rates in the same view.</p>
           </div>
           <div className={`score-panel ${latest.score >= 61 ? "seller" : latest.score <= 39 ? "buyer" : "balanced"}`}>
             <div className="score-heading"><span>Current signal</span><Info size={17} /></div>
@@ -113,19 +117,19 @@ export function MarketDashboard({ data }: { data: MarketData }) {
         </section>
 
         <section className="metrics" aria-label="Latest market inputs">
-          <article><span>For-sale inventory</span><strong>{latest.inventory}</strong><p>Brookfield homes</p><MetricDelta value={latest.inventoryYoy} suffix="% YoY" /></article>
-          <article><span>New listings</span><strong>{latest.newListings}</strong><p>Brookfield, monthly</p>{priorYear && <MetricDelta value={(latest.newListings / priorYear.newListings - 1) * 100} suffix="% YoY" />}</article>
-          <article><span>Median days to pending</span><strong>{latest.countyDaysPending}</strong><p>Fairfield County proxy</p>{priorYear && <MetricDelta value={latest.countyDaysPending - priorYear.countyDaysPending} suffix=" days YoY" inverted />}</article>
+          <article><span>For-sale inventory</span><strong>{latest.inventory}</strong><p>{city} homes</p><MetricDelta value={latest.inventoryYoy} suffix="% YoY" /></article>
+          <article><span>New listings</span><strong>{latest.newListings}</strong><p>{newListingsGeography}, monthly</p>{priorYear && <MetricDelta value={(latest.newListings / priorYear.newListings - 1) * 100} suffix="% YoY" />}</article>
+          <article><span>Median days to pending</span><strong>{latest.countyDaysPending}</strong><p>{county} proxy</p>{priorYear && <MetricDelta value={latest.countyDaysPending - priorYear.countyDaysPending} suffix=" days YoY" inverted />}</article>
           <article><span>30-year mortgage</span><strong>{latest.mortgageRate.toFixed(2)}%</strong><p>U.S. monthly average</p>{priorYear && <MetricDelta value={latest.mortgageRate - priorYear.mortgageRate} suffix=" pts YoY" inverted />}</article>
         </section>
 
-        <LiveListings />
+        <LiveListings city={city} />
 
         <section className="methodology" id="methodology">
           <div className="method-intro"><h2>Methodology you can audit</h2><p>This is our comparative indicator, not a Zillow-published index. The browser computes each monthly score from bundled raw observations.</p><button onClick={downloadCsv}><DownloadSimple size={18} weight="bold" /> Download scored CSV</button></div>
           <div className="formula">
             <div className="formula-line"><span>Market balance</span><strong>45% supply pressure + 30% inventory scarcity + 25% market velocity</strong></div>
-            <ol><li><b>Supply pressure, 45%.</b> Brookfield active inventory divided by new listings. Lower is more seller-favorable.</li><li><b>Inventory scarcity, 30%.</b> Brookfield inventory's 12-month percentage change. Faster contraction is more seller-favorable.</li><li><b>Market velocity, 25%.</b> Fairfield County median days to pending. Fewer days is more seller-favorable.</li><li><b>Normalization.</b> Each input becomes a percentile rank across complete months since January 2020, with direction reversed where needed.</li></ol>
+            <ol><li><b>Supply pressure, 45%.</b> {city} active inventory divided by {newListingsAreLocal ? `${city} city` : `${county} proxy`} new listings. Lower is more seller-favorable.</li><li><b>Inventory scarcity, 30%.</b> {city} inventory&apos;s 12-month percentage change. Faster contraction is more seller-favorable.</li><li><b>Market velocity, 25%.</b> {county} median days to pending. Fewer days is more seller-favorable.</li><li><b>Normalization.</b> Each input becomes a percentile rank across complete months since January 2020, with direction reversed where needed.</li></ol>
             <div className="thresholds"><span><b>0-39</b> Buyer</span><span><b>40-60</b> Balanced</span><span><b>61-100</b> Seller</span></div>
           </div>
         </section>
@@ -133,16 +137,16 @@ export function MarketDashboard({ data }: { data: MarketData }) {
         <section className="sources">
           <h2>Sources, freshness, and limitations</h2>
           <div className="source-grid">
-            <div><b>Brookfield inventory</b><p>Official Zillow Research smoothed monthly for-sale inventory for Brookfield city. Zillow publishes the observation, not this custom score.</p><a href={data.sources.inventory} target="_blank" rel="noreferrer">Open official inventory CSV</a></div>
-            <div><b>Brookfield new listings</b><p>Official Zillow Research smoothed monthly new-listing count for Brookfield city.</p><a href={data.sources.newListings} target="_blank" rel="noreferrer">Open official new-listings CSV</a></div>
-            <div><b>Fairfield County proxy</b><p>Median days to pending uses Fairfield County because Brookfield city history is not sufficiently published. County conditions can differ from Brookfield.</p><a href={data.sources.daysPending} target="_blank" rel="noreferrer">Open official days CSV</a></div>
+            <div><b>{city} inventory</b><p>Official Zillow Research smoothed monthly for-sale inventory for {city} city. Zillow publishes the observation, not this custom score.</p><a href={data.sources.inventory} target="_blank" rel="noreferrer">Open official inventory CSV</a></div>
+            <div><b>{newListingsGeography} new listings</b><p>{data.notes.newListings}</p><a href={data.sources.newListings} target="_blank" rel="noreferrer">Open official new-listings CSV</a></div>
+            <div><b>{county} proxy</b><p>Median days to pending uses {county} because {city} city history is not sufficiently published. County conditions can differ from {city}.</p><a href={data.sources.daysPending} target="_blank" rel="noreferrer">Open official days CSV</a></div>
             <div><b>FRED / Freddie Mac</b><p>Weekly U.S. 30-year fixed mortgage rate, averaged by calendar month. It is national context, not a quote for any borrower.</p><a href="https://fred.stlouisfed.org/series/MORTGAGE30US" target="_blank" rel="noreferrer">Open official FRED series</a></div>
-            <div><b>Interpret with care</b><p>Brookfield is a small market, monthly inputs can move sharply, and percentile scores are relative to this history. This is decision support, not an appraisal or forecast.</p><a href="https://www.zillow.com/research/data/" target="_blank" rel="noreferrer">Review Zillow Research definitions</a></div>
+            <div><b>Interpret with care</b><p>{city} is a small market, monthly inputs can move sharply, and percentile scores are relative to this history. This is decision support, not an appraisal or forecast.</p><a href="https://www.zillow.com/research/data/" target="_blank" rel="noreferrer">Review Zillow Research definitions</a></div>
           </div>
           <p className="refresh-note">Raw snapshot checked {new Date(data.fetchedAt).toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric", timeZone: "UTC" })}. Complete score inputs run through {monthLabel(latest.date, true)}.</p>
         </section>
       </div>
-      <footer><span>Brookfield Buyer Decision Suite</span><a href="#methodology">Review this method</a></footer>
+      <footer><span>{city} Buyer Decision Suite</span><a href="#methodology">Review this method</a></footer>
     </main>
   );
 }

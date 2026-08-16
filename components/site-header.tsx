@@ -13,16 +13,16 @@ const pages = [
   { href: "/buy-now-vs-wait", label: "Buy now or wait" },
 ];
 
-export function SiteHeader() {
+export function SiteHeader({ city }: { city: string }) {
   const pathname = usePathname();
   return (
     <header className="site-header">
       <div className="topbar">
-        <Link className="brand" href="/" aria-label="Brookfield Buyer Decision Suite home">
+        <Link className="brand" href="/" aria-label={`${city} Buyer Decision Suite home`}>
           <span className="brand-mark"><HouseLine size={18} weight="bold" /></span>
-          <span>Brookfield Buyer Suite</span>
+          <span>{city} Buyer Suite</span>
         </Link>
-        <div className="location"><MapPin size={16} weight="fill" /> Brookfield, CT</div>
+        <div className="location"><MapPin size={16} weight="fill" /> {city}, CT</div>
       </div>
       <nav className="suite-nav" aria-label="Buyer decision indicators">
         <div className="suite-nav-inner">

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "fetchedAt": "2026-08-16T20:00:19.275Z",
+  "fetchedAt": "2026-08-16T20:41:16.782Z",
   "geography": {
     "city": {
       "name": "Brookfield",
@@ -16,11 +16,15 @@
       "name": "Bridgeport, CT",
       "state": "CT",
       "zillowRegionId": 394415
+    },
+    "newListings": {
+      "name": "Brookfield",
+      "state": "CT",
+      "zillowRegionId": 23843
     }
   },
   "sources": {
     "inventory": "https://files.zillowstatic.com/research/public_csvs/invt_fs/City_invt_fs_uc_sfrcondo_sm_month.csv",
-    "newListings": "https://files.zillowstatic.com/research/public_csvs/new_listings/City_new_listings_uc_sfrcondo_sm_month.csv",
     "daysPending": "https://files.zillowstatic.com/research/public_csvs/med_doz_pending/County_med_doz_pending_uc_sfrcondo_sm_month.csv",
     "priceCuts": "https://files.zillowstatic.com/research/public_csvs/perc_listings_price_cut/City_perc_listings_price_cut_uc_sfrcondo_sm_month.csv",
     "zhviMiddle": "https://files.zillowstatic.com/research/public_csvs/zhvi/City_zhvi_uc_sfrcondo_tier_0.33_0.67_sm_sa_month.csv",
@@ -31,11 +35,13 @@
     "incomeNeeded": "https://files.zillowstatic.com/research/public_csvs/new_homeowner_income_needed/Metro_new_homeowner_income_needed_downpayment_0.20_uc_sfrcondo_tier_0.33_0.67_sm_sa_month.csv",
     "zori": "https://files.zillowstatic.com/research/public_csvs/zori/Metro_zori_uc_sfrcondomfr_sm_month.csv",
     "zhvf": "https://files.zillowstatic.com/research/public_csvs/zhvf_growth/Metro_zhvf_growth_uc_sfrcondo_tier_0.33_0.67_sm_sa_month.csv",
-    "mortgage": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=MORTGAGE30US"
+    "mortgage": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=MORTGAGE30US",
+    "newListings": "https://files.zillowstatic.com/research/public_csvs/new_listings/City_new_listings_uc_sfrcondo_sm_month.csv"
   },
   "notes": {
     "city": "Brookfield city data is used wherever Zillow publishes the required series.",
-    "county": "Fairfield County is used only for days-to-pending and sale-to-list ratios because Brookfield city history is not published with sufficient coverage.",
+    "county": "Fairfield County is used for days-to-pending and sale-to-list ratios because Brookfield city history is not published with sufficient coverage.",
+    "newListings": "Brookfield city new-listings history is used directly.",
     "metro": "Bridgeport, CT is Zillow's metropolitan proxy for payment, income-needed, rent, and forecast series; these are not Brookfield-specific estimates.",
     "mortgage": "Monthly arithmetic mean computed from Freddie Mac's weekly U.S. 30-year fixed-rate series distributed by FRED (MORTGAGE30US)."
   },

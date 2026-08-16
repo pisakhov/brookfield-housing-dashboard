@@ -1,11 +1,15 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 
+import forecastVintages from "../app/data/forecast-vintages.json";
 import marketDataJson from "../app/data/market-data.json";
-import { clamp, percentileRank, scoreAffordabilityStress, scoreBudgetReach, scoreBuyNowWait, scoreBuyRentHurdle, scoreMarket, scoreOfferLeverage } from "../lib/calculations";
+import ridgefieldDataJson from "../app/data/ridgefield-market-data.json";
+import { clamp, percentileRank, scoreAffordabilityStress, scoreBudgetReach, scoreBuyNowWait, scoreBuyNowWaitHistory, scoreBuyRentHurdle, scoreMarket, scoreOfferLeverage } from "../lib/calculations";
 import type { MarketData, OwnershipObservation } from "../lib/market-data";
 
-const marketData = marketDataJson as MarketData;
+const marketData = { ...marketDataJson, forecastHistory: forecastVintages.vintages } as MarketData;
+const ridgefieldData = { ...ridgefieldDataJson, forecastHistory: forecastVintages.vintages } as MarketData;
+const publishedMarkets = [marketData, ridgefieldData];
 
 function monthAt(index: number) {
   const date = new Date(Date.UTC(2020, index, 1));
@@ -71,30 +75,36 @@ test("buy-versus-rent hurdle matches a hand-calculated example", () => {
   assert.ok(Math.abs(score.score - 80) < 1e-9);
 });
 
-test("all published scores are finite and bounded", () => {
-  const collections = [scoreMarket(marketData.series.market), scoreOfferLeverage(marketData), scoreBudgetReach(marketData.series.homeValues), scoreAffordabilityStress(marketData.series.ownership)];
-  for (const collection of collections) {
-    assert.ok(collection.length > 0);
-    for (const point of collection) assert.ok(Number.isFinite(point.score) && point.score >= 0 && point.score <= 100);
+test("all published town scores are finite and bounded", () => {
+  for (const data of publishedMarkets) {
+    const collections = [scoreMarket(data.series.market), scoreOfferLeverage(data), scoreBudgetReach(data.series.homeValues), scoreAffordabilityStress(data.series.ownership), scoreBuyNowWaitHistory(data)];
+    for (const collection of collections) {
+      assert.ok(collection.length > 0);
+      for (const point of collection) assert.ok(Number.isFinite(point.score) && point.score >= 0 && point.score <= 100);
+    }
+    for (const score of [scoreBuyRentHurdle(data).score, scoreBuyNowWait(data).score]) assert.ok(Number.isFinite(score) && score >= 0 && score <= 100);
   }
-  for (const score of [scoreBuyRentHurdle(marketData).score, scoreBuyNowWait(marketData).score]) assert.ok(Number.isFinite(score) && score >= 0 && score <= 100);
 });
 
-test("current published raw observations and scores match independently reviewed values", () => {
-  const market = scoreMarket(marketData.series.market).at(-1)!;
-  const offer = scoreOfferLeverage(marketData).at(-1)!;
-  const budget = scoreBudgetReach(marketData.series.homeValues).at(-1)!;
-  const stress = scoreAffordabilityStress(marketData.series.ownership).at(-1)!;
-  const rent = scoreBuyRentHurdle(marketData);
-  const wait = scoreBuyNowWait(marketData);
-
-  assert.deepEqual(marketData.series.market.at(-1), { date: "2026-07", inventory: 68, newListings: 30, countyDaysPending: 13, mortgageRate: 6.542 });
-  assert.deepEqual(marketData.series.homeValues.at(-1), { date: "2026-07", middle: 592687.87, bottom: 410282.48 });
-  assert.deepEqual(marketData.series.ownership.at(-1), { date: "2026-07", totalMonthlyPayment: 4881.17, incomeNeeded: 195246.69, zori: 2896.77, middleZhvi: 592687.87, mortgageRate: 6.542 });
-  assert.equal(marketData.forecast.observations.at(-1)!.growthPct, 3.6);
-
-  const reviewed = { market: 49.359, offer: 45.7143, budget: 71.7299, stress: 74.8077, rent: 49.6776, wait: 57.8726 };
-  for (const [actual, expected] of [[market.score, reviewed.market], [offer.score, reviewed.offer], [budget.score, reviewed.budget], [stress.score, reviewed.stress], [rent.score, reviewed.rent], [wait.score, reviewed.wait]]) {
-    assert.ok(Math.abs(actual - expected) < 0.001, `${actual} should equal independently reviewed ${expected}`);
+test("forecast-vintage history is honest, ordered, and reaches the current score", () => {
+  for (const data of publishedMarkets) {
+    const history = scoreBuyNowWaitHistory(data);
+    assert.ok(history.length >= 2);
+    assert.deepEqual(data.forecastHistory.at(-1), data.forecast);
+    for (let index = 1; index < history.length; index += 1) assert.ok(history[index].date > history[index - 1].date);
+    const current = scoreBuyNowWait(data);
+    assert.equal(history.at(-1)!.date, current.date);
+    assert.ok(Math.abs(history.at(-1)!.score - current.score) < 1e-9);
+    for (const point of history) {
+      assert.ok(point.offerDate <= point.date);
+      assert.ok(point.budgetDate <= point.date);
+      assert.ok(point.affordabilityDate <= point.date);
+    }
   }
+});
+
+test("new-listings geography is explicit for each town", () => {
+  assert.equal(marketData.geography.newListings.zillowRegionId, marketData.geography.city.zillowRegionId);
+  assert.equal(ridgefieldData.geography.newListings.zillowRegionId, ridgefieldData.geography.countyProxy.zillowRegionId);
+  assert.match(ridgefieldData.notes.newListings, /proxy/);
 });

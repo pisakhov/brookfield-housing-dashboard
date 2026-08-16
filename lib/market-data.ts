@@ -18,6 +18,11 @@ export type OwnershipObservation = {
   mortgageRate: number;
 };
 
+export type ForecastVintage = {
+  baseDate: string;
+  observations: Array<{ date: string; growthPct: number }>;
+};
+
 export type MarketData = {
   schemaVersion: number;
   fetchedAt: string;
@@ -25,6 +30,7 @@ export type MarketData = {
     city: { name: string; state: string; zillowRegionId: number };
     countyProxy: { name: string; state: string; zillowRegionId: number };
     metroProxy: { name: string; state: string; zillowRegionId: number };
+    newListings: { name: string; state: string; zillowRegionId: number };
   };
   sources: Record<string, string>;
   notes: Record<string, string>;
@@ -35,10 +41,8 @@ export type MarketData = {
     saleToList: SaleToListObservation[];
     ownership: OwnershipObservation[];
   };
-  forecast: {
-    baseDate: string;
-    observations: Array<{ date: string; growthPct: number }>;
-  };
+  forecast: ForecastVintage;
+  forecastHistory: ForecastVintage[];
 };
 
 export function monthLabel(date: string, long = false) {

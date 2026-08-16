@@ -1,0 +1,24 @@
+{
+  "brookfield": {
+    "slug": "brookfield",
+    "city": { "name": "Brookfield", "state": "CT", "zillowRegionId": 23843 },
+    "countyProxy": { "name": "Fairfield County", "state": "CT", "zillowRegionId": 2694 },
+    "metroProxy": { "name": "Bridgeport, CT", "state": "CT", "zillowRegionId": 394415 },
+    "newListingsGeography": "city",
+    "zillowPath": "brookfield-ct",
+    "mapBounds": { "west": -73.515, "east": -73.295, "south": 41.405, "north": 41.565 },
+    "dataFile": "app/data/market-data.json",
+    "productionUrl": "https://brookfield-market.187.77.218.3.sslip.io"
+  },
+  "ridgefield": {
+    "slug": "ridgefield",
+    "city": { "name": "Ridgefield", "state": "CT", "zillowRegionId": 397582 },
+    "countyProxy": { "name": "Fairfield County", "state": "CT", "zillowRegionId": 2694 },
+    "metroProxy": { "name": "Bridgeport, CT", "state": "CT", "zillowRegionId": 394415 },
+    "newListingsGeography": "countyProxy",
+    "zillowPath": "ridgefield-ct",
+    "mapBounds": { "west": -73.585, "east": -73.405, "south": 41.225, "north": 41.375 },
+    "dataFile": "app/data/ridgefield-market-data.json",
+    "productionUrl": "https://ridgefield-market.187.77.218.3.sslip.io"
+  }
+}

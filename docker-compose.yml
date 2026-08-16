@@ -9,6 +9,7 @@ services:
       NODE_ENV: production
       PORT: 3000
       LISTINGS_DATA_PATH: /data/listings.json
+      MARKET_TOWN: ${MARKET_TOWN:-brookfield}
     volumes:
       - listing_data:/data:ro
     expose:
@@ -24,6 +25,14 @@ services:
       APIFY_TOKEN: ${APIFY_TOKEN:?APIFY_TOKEN is required}
       DATA_PATH: /data/listings.json
       REFRESH_INTERVAL_MS: "172800000"
+      MARKET_CITY: ${MARKET_CITY:-Brookfield}
+      MARKET_STATE: ${MARKET_STATE:-CT}
+      ZILLOW_REGION_ID: "${ZILLOW_REGION_ID:-23843}"
+      ZILLOW_PATH: ${ZILLOW_PATH:-brookfield-ct}
+      MAP_WEST: "${MAP_WEST:--73.515}"
+      MAP_EAST: "${MAP_EAST:--73.295}"
+      MAP_SOUTH: "${MAP_SOUTH:-41.405}"
+      MAP_NORTH: "${MAP_NORTH:-41.565}"
     volumes:
       - listing_data:/data
 

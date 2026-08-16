@@ -1,9 +1,13 @@
 import type { Metadata } from "next";
-import marketData from "../data/market-data.json";
+import { getCurrentMarket } from "@/lib/current-market";
 import { DecisionDashboard } from "../decision-dashboard";
 
-export const metadata: Metadata = { title: "Buy-versus-Rent Hurdle", description: "Compare Bridgeport metro ownership payment and rent with Brookfield home values and the official Zillow forecast." };
+export function generateMetadata(): Metadata {
+  const { config } = getCurrentMarket();
+  return { title: "Buy-versus-Rent Hurdle", description: `Compare ${config.metroProxy.name} ownership payment and rent with ${config.city.name} home values and the official Zillow forecast.` };
+}
 
 export default function BuyVsRentPage() {
-  return <DecisionDashboard kind="rent" data={marketData} />;
+  const { data } = getCurrentMarket();
+  return <DecisionDashboard kind="rent" data={data} />;
 }

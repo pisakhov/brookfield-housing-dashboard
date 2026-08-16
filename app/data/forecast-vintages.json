@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "metroRegionId": 394415,
+  "vintages": [
+    {
+      "baseDate": "2026-06-30",
+      "observations": [
+        {
+          "date": "2026-07",
+          "growthPct": 0.4
+        },
+        {
+          "date": "2026-09",
+          "growthPct": 0.7
+        },
+        {
+          "date": "2027-06",
+          "growthPct": 2.4
+        }
+      ]
+    },
+    {
+      "baseDate": "2026-07-31",
+      "observations": [
+        {
+          "date": "2026-08",
+          "growthPct": 0.5
+        },
+        {
+          "date": "2026-10",
+          "growthPct": 1
+        },
+        {
+          "date": "2027-07",
+          "growthPct": 3.6
+        }
+      ]
+    }
+  ]
+}

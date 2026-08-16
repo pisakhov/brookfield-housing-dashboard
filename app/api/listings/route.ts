@@ -1,5 +1,6 @@
 import { readFile } from "node:fs/promises";
 import { NextResponse } from "next/server";
+import { getCurrentMarket } from "@/lib/current-market";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -13,11 +14,12 @@ export async function GET() {
       headers: { "cache-control": "no-store, max-age=0" },
     });
   } catch {
+    const { config } = getCurrentMarket();
     return NextResponse.json({
       status: "initializing",
       fetchedAt: null,
-      filter: { city: "Brookfield", state: "CT", maximumPrice: 500000, status: "for sale" },
-      source: { name: "Zillow via Apify", url: "https://www.zillow.com/brookfield-ct/" },
+      filter: { city: config.city.name, state: config.city.state, maximumPrice: 500000, status: "for sale" },
+      source: { name: "Zillow via Apify", url: `https://www.zillow.com/${config.zillowPath}/` },
       listings: [],
     }, {
       headers: { "cache-control": "no-store, max-age=0" },

@@ -1,9 +1,13 @@
 import type { Metadata } from "next";
-import marketData from "../data/market-data.json";
+import { getCurrentMarket } from "@/lib/current-market";
 import { DecisionDashboard } from "../decision-dashboard";
 
-export const metadata: Metadata = { title: "Offer Leverage Score", description: "Brookfield price cuts and Fairfield County sale-to-list and timing signals combined into a transparent buyer leverage score." };
+export function generateMetadata(): Metadata {
+  const { config } = getCurrentMarket();
+  return { title: "Offer Leverage Score", description: `${config.city.name} price cuts and ${config.countyProxy.name} sale-to-list and timing signals combined into a transparent buyer leverage score.` };
+}
 
 export default function OfferLeveragePage() {
-  return <DecisionDashboard kind="offer" data={marketData} />;
+  const { data } = getCurrentMarket();
+  return <DecisionDashboard kind="offer" data={data} />;
 }

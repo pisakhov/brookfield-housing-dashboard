@@ -1,0 +1,4395 @@
+{
+  "schemaVersion": 2,
+  "fetchedAt": "2026-08-16T20:41:16.782Z",
+  "geography": {
+    "city": {
+      "name": "Ridgefield",
+      "state": "CT",
+      "zillowRegionId": 397582
+    },
+    "countyProxy": {
+      "name": "Fairfield County",
+      "state": "CT",
+      "zillowRegionId": 2694
+    },
+    "metroProxy": {
+      "name": "Bridgeport, CT",
+      "state": "CT",
+      "zillowRegionId": 394415
+    },
+    "newListings": {
+      "name": "Fairfield County",
+      "state": "CT",
+      "zillowRegionId": 2694
+    }
+  },
+  "sources": {
+    "inventory": "https://files.zillowstatic.com/research/public_csvs/invt_fs/City_invt_fs_uc_sfrcondo_sm_month.csv",
+    "daysPending": "https://files.zillowstatic.com/research/public_csvs/med_doz_pending/County_med_doz_pending_uc_sfrcondo_sm_month.csv",
+    "priceCuts": "https://files.zillowstatic.com/research/public_csvs/perc_listings_price_cut/City_perc_listings_price_cut_uc_sfrcondo_sm_month.csv",
+    "zhviMiddle": "https://files.zillowstatic.com/research/public_csvs/zhvi/City_zhvi_uc_sfrcondo_tier_0.33_0.67_sm_sa_month.csv",
+    "zhviBottom": "https://files.zillowstatic.com/research/public_csvs/zhvi/City_zhvi_uc_sfrcondo_tier_0.0_0.33_sm_sa_month.csv",
+    "saleToListMean": "https://files.zillowstatic.com/research/public_csvs/mean_sale_to_list/County_mean_sale_to_list_uc_sfrcondo_sm_month.csv",
+    "saleToListMedian": "https://files.zillowstatic.com/research/public_csvs/median_sale_to_list/County_median_sale_to_list_uc_sfrcondo_sm_month.csv",
+    "totalMonthlyPayment": "https://files.zillowstatic.com/research/public_csvs/total_monthly_payment/Metro_total_monthly_payment_downpayment_0.20_uc_sfrcondo_tier_0.33_0.67_sm_sa_month.csv",
+    "incomeNeeded": "https://files.zillowstatic.com/research/public_csvs/new_homeowner_income_needed/Metro_new_homeowner_income_needed_downpayment_0.20_uc_sfrcondo_tier_0.33_0.67_sm_sa_month.csv",
+    "zori": "https://files.zillowstatic.com/research/public_csvs/zori/Metro_zori_uc_sfrcondomfr_sm_month.csv",
+    "zhvf": "https://files.zillowstatic.com/research/public_csvs/zhvf_growth/Metro_zhvf_growth_uc_sfrcondo_tier_0.33_0.67_sm_sa_month.csv",
+    "mortgage": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=MORTGAGE30US",
+    "newListings": "https://files.zillowstatic.com/research/public_csvs/new_listings/County_new_listings_uc_sfrcondo_sm_month.csv"
+  },
+  "notes": {
+    "city": "Ridgefield city data is used wherever Zillow publishes the required series.",
+    "county": "Fairfield County is used for days-to-pending and sale-to-list ratios because Ridgefield city history is not published with sufficient coverage.",
+    "newListings": "Fairfield County new listings are a disclosed flow proxy because Zillow's Ridgefield city series begins only in 2026 and cannot support a historical 12-month market score.",
+    "metro": "Bridgeport, CT is Zillow's metropolitan proxy for payment, income-needed, rent, and forecast series; these are not Ridgefield-specific estimates.",
+    "mortgage": "Monthly arithmetic mean computed from Freddie Mac's weekly U.S. 30-year fixed-rate series distributed by FRED (MORTGAGE30US)."
+  },
+  "series": {
+    "market": [
+      {
+        "date": "2018-03",
+        "inventory": 237,
+        "newListings": 1298,
+        "countyDaysPending": 54,
+        "mortgageRate": 4.444
+      },
+      {
+        "date": "2018-04",
+        "inventory": 260,
+        "newListings": 1986,
+        "countyDaysPending": 29,
+        "mortgageRate": 4.467
+      },
+      {
+        "date": "2018-05",
+        "inventory": 292,
+        "newListings": 2165,
+        "countyDaysPending": 23,
+        "mortgageRate": 4.586
+      },
+      {
+        "date": "2018-06",
+        "inventory": 315,
+        "newListings": 2145,
+        "countyDaysPending": 25,
+        "mortgageRate": 4.57
+      },
+      {
+        "date": "2018-07",
+        "inventory": 316,
+        "newListings": 1516,
+        "countyDaysPending": 32,
+        "mortgageRate": 4.527
+      },
+      {
+        "date": "2018-08",
+        "inventory": 301,
+        "newListings": 1235,
+        "countyDaysPending": 38,
+        "mortgageRate": 4.55
+      },
+      {
+        "date": "2018-09",
+        "inventory": 279,
+        "newListings": 1158,
+        "countyDaysPending": 40,
+        "mortgageRate": 4.628
+      },
+      {
+        "date": "2018-10",
+        "inventory": 267,
+        "newListings": 1135,
+        "countyDaysPending": 42,
+        "mortgageRate": 4.83
+      },
+      {
+        "date": "2018-11",
+        "inventory": 252,
+        "newListings": 1020,
+        "countyDaysPending": 45,
+        "mortgageRate": 4.866
+      },
+      {
+        "date": "2018-12",
+        "inventory": 227,
+        "newListings": 732,
+        "countyDaysPending": 53,
+        "mortgageRate": 4.638
+      },
+      {
+        "date": "2019-01",
+        "inventory": 202,
+        "newListings": 707,
+        "countyDaysPending": 58,
+        "mortgageRate": 4.464
+      },
+      {
+        "date": "2019-02",
+        "inventory": 194,
+        "newListings": 885,
+        "countyDaysPending": 52,
+        "mortgageRate": 4.37
+      },
+      {
+        "date": "2019-03",
+        "inventory": 214,
+        "newListings": 1316,
+        "countyDaysPending": 40,
+        "mortgageRate": 4.265
+      },
+      {
+        "date": "2019-04",
+        "inventory": 245,
+        "newListings": 1580,
+        "countyDaysPending": 29,
+        "mortgageRate": 4.143
+      },
+      {
+        "date": "2019-05",
+        "inventory": 287,
+        "newListings": 1845,
+        "countyDaysPending": 25,
+        "mortgageRate": 4.072
+      },
+      {
+        "date": "2019-06",
+        "inventory": 322,
+        "newListings": 1763,
+        "countyDaysPending": 27,
+        "mortgageRate": 3.803
+      },
+      {
+        "date": "2019-07",
+        "inventory": 342,
+        "newListings": 1559,
+        "countyDaysPending": 32,
+        "mortgageRate": 3.765
+      },
+      {
+        "date": "2019-08",
+        "inventory": 332,
+        "newListings": 1213,
+        "countyDaysPending": 41,
+        "mortgageRate": 3.616
+      },
+      {
+        "date": "2019-09",
+        "inventory": 319,
+        "newListings": 1180,
+        "countyDaysPending": 45,
+        "mortgageRate": 3.605
+      },
+      {
+        "date": "2019-10",
+        "inventory": 310,
+        "newListings": 1136,
+        "countyDaysPending": 48,
+        "mortgageRate": 3.688
+      },
+      {
+        "date": "2019-11",
+        "inventory": 300,
+        "newListings": 1021,
+        "countyDaysPending": 49,
+        "mortgageRate": 3.695
+      },
+      {
+        "date": "2019-12",
+        "inventory": 266,
+        "newListings": 700,
+        "countyDaysPending": 63,
+        "mortgageRate": 3.72
+      },
+      {
+        "date": "2020-01",
+        "inventory": 232,
+        "newListings": 675,
+        "countyDaysPending": 69,
+        "mortgageRate": 3.624
+      },
+      {
+        "date": "2020-02",
+        "inventory": 212,
+        "newListings": 930,
+        "countyDaysPending": 60,
+        "mortgageRate": 3.465
+      },
+      {
+        "date": "2020-03",
+        "inventory": 221,
+        "newListings": 1259,
+        "countyDaysPending": 38,
+        "mortgageRate": 3.45
+      },
+      {
+        "date": "2020-04",
+        "inventory": 222,
+        "newListings": 1157,
+        "countyDaysPending": 29,
+        "mortgageRate": 3.306
+      },
+      {
+        "date": "2020-05",
+        "inventory": 233,
+        "newListings": 1240,
+        "countyDaysPending": 32,
+        "mortgageRate": 3.232
+      },
+      {
+        "date": "2020-06",
+        "inventory": 241,
+        "newListings": 1503,
+        "countyDaysPending": 31,
+        "mortgageRate": 3.162
+      },
+      {
+        "date": "2020-07",
+        "inventory": 259,
+        "newListings": 1989,
+        "countyDaysPending": 24,
+        "mortgageRate": 3.016
+      },
+      {
+        "date": "2020-08",
+        "inventory": 251,
+        "newListings": 1983,
+        "countyDaysPending": 17,
+        "mortgageRate": 2.935
+      },
+      {
+        "date": "2020-09",
+        "inventory": 242,
+        "newListings": 1822,
+        "countyDaysPending": 17,
+        "mortgageRate": 2.89
+      },
+      {
+        "date": "2020-10",
+        "inventory": 224,
+        "newListings": 1616,
+        "countyDaysPending": 18,
+        "mortgageRate": 2.834
+      },
+      {
+        "date": "2020-11",
+        "inventory": 201,
+        "newListings": 1392,
+        "countyDaysPending": 19,
+        "mortgageRate": 2.765
+      },
+      {
+        "date": "2020-12",
+        "inventory": 161,
+        "newListings": 1048,
+        "countyDaysPending": 21,
+        "mortgageRate": 2.684
+      },
+      {
+        "date": "2021-01",
+        "inventory": 130,
+        "newListings": 871,
+        "countyDaysPending": 27,
+        "mortgageRate": 2.735
+      },
+      {
+        "date": "2021-02",
+        "inventory": 109,
+        "newListings": 887,
+        "countyDaysPending": 25,
+        "mortgageRate": 2.81
+      },
+      {
+        "date": "2021-03",
+        "inventory": 105,
+        "newListings": 1220,
+        "countyDaysPending": 19,
+        "mortgageRate": 3.083
+      },
+      {
+        "date": "2021-04",
+        "inventory": 107,
+        "newListings": 1510,
+        "countyDaysPending": 8,
+        "mortgageRate": 3.06
+      },
+      {
+        "date": "2021-05",
+        "inventory": 115,
+        "newListings": 1800,
+        "countyDaysPending": 7,
+        "mortgageRate": 2.963
+      },
+      {
+        "date": "2021-06",
+        "inventory": 125,
+        "newListings": 1858,
+        "countyDaysPending": 8,
+        "mortgageRate": 2.975
+      },
+      {
+        "date": "2021-07",
+        "inventory": 126,
+        "newListings": 1761,
+        "countyDaysPending": 10,
+        "mortgageRate": 2.868
+      },
+      {
+        "date": "2021-08",
+        "inventory": 127,
+        "newListings": 1554,
+        "countyDaysPending": 13,
+        "mortgageRate": 2.843
+      },
+      {
+        "date": "2021-09",
+        "inventory": 115,
+        "newListings": 1349,
+        "countyDaysPending": 14,
+        "mortgageRate": 2.9
+      },
+      {
+        "date": "2021-10",
+        "inventory": 102,
+        "newListings": 1188,
+        "countyDaysPending": 16,
+        "mortgageRate": 3.067
+      },
+      {
+        "date": "2021-11",
+        "inventory": 83,
+        "newListings": 1040,
+        "countyDaysPending": 16,
+        "mortgageRate": 3.067
+      },
+      {
+        "date": "2021-12",
+        "inventory": 66,
+        "newListings": 805,
+        "countyDaysPending": 17,
+        "mortgageRate": 3.098
+      },
+      {
+        "date": "2022-01",
+        "inventory": 54,
+        "newListings": 661,
+        "countyDaysPending": 16,
+        "mortgageRate": 3.445
+      },
+      {
+        "date": "2022-02",
+        "inventory": 50,
+        "newListings": 686,
+        "countyDaysPending": 13,
+        "mortgageRate": 3.763
+      },
+      {
+        "date": "2022-03",
+        "inventory": 57,
+        "newListings": 927,
+        "countyDaysPending": 9,
+        "mortgageRate": 4.172
+      },
+      {
+        "date": "2022-04",
+        "inventory": 73,
+        "newListings": 1181,
+        "countyDaysPending": 7,
+        "mortgageRate": 4.982
+      },
+      {
+        "date": "2022-05",
+        "inventory": 92,
+        "newListings": 1397,
+        "countyDaysPending": 7,
+        "mortgageRate": 5.23
+      },
+      {
+        "date": "2022-06",
+        "inventory": 111,
+        "newListings": 1527,
+        "countyDaysPending": 8,
+        "mortgageRate": 5.522
+      },
+      {
+        "date": "2022-07",
+        "inventory": 111,
+        "newListings": 1447,
+        "countyDaysPending": 10,
+        "mortgageRate": 5.412
+      },
+      {
+        "date": "2022-08",
+        "inventory": 100,
+        "newListings": 1250,
+        "countyDaysPending": 13,
+        "mortgageRate": 5.223
+      },
+      {
+        "date": "2022-09",
+        "inventory": 83,
+        "newListings": 1033,
+        "countyDaysPending": 14,
+        "mortgageRate": 6.112
+      },
+      {
+        "date": "2022-10",
+        "inventory": 75,
+        "newListings": 909,
+        "countyDaysPending": 15,
+        "mortgageRate": 6.9
+      },
+      {
+        "date": "2022-11",
+        "inventory": 69,
+        "newListings": 779,
+        "countyDaysPending": 17,
+        "mortgageRate": 6.805
+      },
+      {
+        "date": "2022-12",
+        "inventory": 61,
+        "newListings": 558,
+        "countyDaysPending": 20,
+        "mortgageRate": 6.364
+      },
+      {
+        "date": "2023-01",
+        "inventory": 52,
+        "newListings": 475,
+        "countyDaysPending": 20,
+        "mortgageRate": 6.272
+      },
+      {
+        "date": "2023-02",
+        "inventory": 46,
+        "newListings": 514,
+        "countyDaysPending": 17,
+        "mortgageRate": 6.258
+      },
+      {
+        "date": "2023-03",
+        "inventory": 48,
+        "newListings": 735,
+        "countyDaysPending": 11,
+        "mortgageRate": 6.544
+      },
+      {
+        "date": "2023-04",
+        "inventory": 52,
+        "newListings": 862,
+        "countyDaysPending": 9,
+        "mortgageRate": 6.343
+      },
+      {
+        "date": "2023-05",
+        "inventory": 63,
+        "newListings": 1004,
+        "countyDaysPending": 8,
+        "mortgageRate": 6.425
+      },
+      {
+        "date": "2023-06",
+        "inventory": 71,
+        "newListings": 1014,
+        "countyDaysPending": 8,
+        "mortgageRate": 6.714
+      },
+      {
+        "date": "2023-07",
+        "inventory": 73,
+        "newListings": 979,
+        "countyDaysPending": 10,
+        "mortgageRate": 6.84
+      },
+      {
+        "date": "2023-08",
+        "inventory": 65,
+        "newListings": 871,
+        "countyDaysPending": 11,
+        "mortgageRate": 7.072
+      },
+      {
+        "date": "2023-09",
+        "inventory": 62,
+        "newListings": 825,
+        "countyDaysPending": 12,
+        "mortgageRate": 7.2
+      },
+      {
+        "date": "2023-10",
+        "inventory": 61,
+        "newListings": 823,
+        "countyDaysPending": 12,
+        "mortgageRate": 7.62
+      },
+      {
+        "date": "2023-11",
+        "inventory": 63,
+        "newListings": 757,
+        "countyDaysPending": 12,
+        "mortgageRate": 7.442
+      },
+      {
+        "date": "2023-12",
+        "inventory": 54,
+        "newListings": 574,
+        "countyDaysPending": 15,
+        "mortgageRate": 6.815
+      },
+      {
+        "date": "2024-01",
+        "inventory": 42,
+        "newListings": 480,
+        "countyDaysPending": 15,
+        "mortgageRate": 6.643
+      },
+      {
+        "date": "2024-02",
+        "inventory": 38,
+        "newListings": 512,
+        "countyDaysPending": 14,
+        "mortgageRate": 6.776
+      },
+      {
+        "date": "2024-03",
+        "inventory": 41,
+        "newListings": 663,
+        "countyDaysPending": 10,
+        "mortgageRate": 6.82
+      },
+      {
+        "date": "2024-04",
+        "inventory": 51,
+        "newListings": 835,
+        "countyDaysPending": 9,
+        "mortgageRate": 6.992
+      },
+      {
+        "date": "2024-05",
+        "inventory": 62,
+        "newListings": 1009,
+        "countyDaysPending": 9,
+        "mortgageRate": 7.06
+      },
+      {
+        "date": "2024-06",
+        "inventory": 71,
+        "newListings": 1098,
+        "countyDaysPending": 9,
+        "mortgageRate": 6.918
+      },
+      {
+        "date": "2024-07",
+        "inventory": 71,
+        "newListings": 1027,
+        "countyDaysPending": 11,
+        "mortgageRate": 6.848
+      },
+      {
+        "date": "2024-08",
+        "inventory": 67,
+        "newListings": 907,
+        "countyDaysPending": 12,
+        "mortgageRate": 6.5
+      },
+      {
+        "date": "2024-09",
+        "inventory": 65,
+        "newListings": 861,
+        "countyDaysPending": 13,
+        "mortgageRate": 6.18
+      },
+      {
+        "date": "2024-10",
+        "inventory": 66,
+        "newListings": 862,
+        "countyDaysPending": 14,
+        "mortgageRate": 6.428
+      },
+      {
+        "date": "2024-11",
+        "inventory": 58,
+        "newListings": 749,
+        "countyDaysPending": 15,
+        "mortgageRate": 6.805
+      },
+      {
+        "date": "2024-12",
+        "inventory": 43,
+        "newListings": 552,
+        "countyDaysPending": 18,
+        "mortgageRate": 6.715
+      },
+      {
+        "date": "2025-01",
+        "inventory": 35,
+        "newListings": 457,
+        "countyDaysPending": 18,
+        "mortgageRate": 6.958
+      },
+      {
+        "date": "2025-02",
+        "inventory": 33,
+        "newListings": 503,
+        "countyDaysPending": 15,
+        "mortgageRate": 6.842
+      },
+      {
+        "date": "2025-03",
+        "inventory": 38,
+        "newListings": 706,
+        "countyDaysPending": 10,
+        "mortgageRate": 6.65
+      },
+      {
+        "date": "2025-04",
+        "inventory": 48,
+        "newListings": 876,
+        "countyDaysPending": 9,
+        "mortgageRate": 6.725
+      },
+      {
+        "date": "2025-05",
+        "inventory": 64,
+        "newListings": 1103,
+        "countyDaysPending": 9,
+        "mortgageRate": 6.816
+      },
+      {
+        "date": "2025-06",
+        "inventory": 77,
+        "newListings": 1140,
+        "countyDaysPending": 11,
+        "mortgageRate": 6.817
+      },
+      {
+        "date": "2025-07",
+        "inventory": 83,
+        "newListings": 1070,
+        "countyDaysPending": 12,
+        "mortgageRate": 6.72
+      },
+      {
+        "date": "2025-08",
+        "inventory": 80,
+        "newListings": 876,
+        "countyDaysPending": 15,
+        "mortgageRate": 6.587
+      },
+      {
+        "date": "2025-09",
+        "inventory": 77,
+        "newListings": 862,
+        "countyDaysPending": 15,
+        "mortgageRate": 6.353
+      },
+      {
+        "date": "2025-10",
+        "inventory": 74,
+        "newListings": 848,
+        "countyDaysPending": 15,
+        "mortgageRate": 6.254
+      },
+      {
+        "date": "2025-11",
+        "inventory": 72,
+        "newListings": 778,
+        "countyDaysPending": 15,
+        "mortgageRate": 6.237
+      },
+      {
+        "date": "2025-12",
+        "inventory": 61,
+        "newListings": 556,
+        "countyDaysPending": 18,
+        "mortgageRate": 6.19
+      },
+      {
+        "date": "2026-01",
+        "inventory": 49,
+        "newListings": 455,
+        "countyDaysPending": 19,
+        "mortgageRate": 6.102
+      },
+      {
+        "date": "2026-02",
+        "inventory": 38,
+        "newListings": 471,
+        "countyDaysPending": 17,
+        "mortgageRate": 6.048
+      },
+      {
+        "date": "2026-03",
+        "inventory": 39,
+        "newListings": 649,
+        "countyDaysPending": 12,
+        "mortgageRate": 6.177
+      },
+      {
+        "date": "2026-04",
+        "inventory": 49,
+        "newListings": 872,
+        "countyDaysPending": 10,
+        "mortgageRate": 6.332
+      },
+      {
+        "date": "2026-05",
+        "inventory": 68,
+        "newListings": 1097,
+        "countyDaysPending": 10,
+        "mortgageRate": 6.443
+      },
+      {
+        "date": "2026-06",
+        "inventory": 82,
+        "newListings": 1196,
+        "countyDaysPending": 11,
+        "mortgageRate": 6.49
+      },
+      {
+        "date": "2026-07",
+        "inventory": 87,
+        "newListings": 1101,
+        "countyDaysPending": 13,
+        "mortgageRate": 6.542
+      }
+    ],
+    "priceCuts": [
+      {
+        "date": "2018-03",
+        "share": 0.12801
+      },
+      {
+        "date": "2018-04",
+        "share": 0.150306
+      },
+      {
+        "date": "2018-05",
+        "share": 0.18672
+      },
+      {
+        "date": "2018-06",
+        "share": 0.23175
+      },
+      {
+        "date": "2018-07",
+        "share": 0.249309
+      },
+      {
+        "date": "2018-08",
+        "share": 0.212975
+      },
+      {
+        "date": "2018-09",
+        "share": 0.223052
+      },
+      {
+        "date": "2018-10",
+        "share": 0.21351
+      },
+      {
+        "date": "2018-11",
+        "share": 0.200539
+      },
+      {
+        "date": "2018-12",
+        "share": 0.130483
+      },
+      {
+        "date": "2019-01",
+        "share": 0.13196
+      },
+      {
+        "date": "2019-02",
+        "share": 0.15839
+      },
+      {
+        "date": "2019-03",
+        "share": 0.205176
+      },
+      {
+        "date": "2019-04",
+        "share": 0.206645
+      },
+      {
+        "date": "2019-05",
+        "share": 0.229812
+      },
+      {
+        "date": "2019-06",
+        "share": 0.259993
+      },
+      {
+        "date": "2019-07",
+        "share": 0.261163
+      },
+      {
+        "date": "2019-08",
+        "share": 0.248859
+      },
+      {
+        "date": "2019-09",
+        "share": 0.245457
+      },
+      {
+        "date": "2019-10",
+        "share": 0.262478
+      },
+      {
+        "date": "2019-11",
+        "share": 0.22608
+      },
+      {
+        "date": "2019-12",
+        "share": 0.156592
+      },
+      {
+        "date": "2020-01",
+        "share": 0.132515
+      },
+      {
+        "date": "2020-02",
+        "share": 0.17445
+      },
+      {
+        "date": "2020-03",
+        "share": 0.190144
+      },
+      {
+        "date": "2020-04",
+        "share": 0.157568
+      },
+      {
+        "date": "2020-05",
+        "share": 0.135538
+      },
+      {
+        "date": "2020-06",
+        "share": 0.153805
+      },
+      {
+        "date": "2020-07",
+        "share": 0.159888
+      },
+      {
+        "date": "2020-08",
+        "share": 0.13995
+      },
+      {
+        "date": "2020-09",
+        "share": 0.154506
+      },
+      {
+        "date": "2020-10",
+        "share": 0.155018
+      },
+      {
+        "date": "2020-11",
+        "share": 0.161609
+      },
+      {
+        "date": "2020-12",
+        "share": 0.119534
+      },
+      {
+        "date": "2021-01",
+        "share": 0.11596
+      },
+      {
+        "date": "2021-02",
+        "share": 0.107347
+      },
+      {
+        "date": "2021-03",
+        "share": 0.129413
+      },
+      {
+        "date": "2021-04",
+        "share": 0.130132
+      },
+      {
+        "date": "2021-05",
+        "share": 0.152937
+      },
+      {
+        "date": "2021-06",
+        "share": 0.169787
+      },
+      {
+        "date": "2021-07",
+        "share": 0.190101
+      },
+      {
+        "date": "2021-08",
+        "share": 0.186405
+      },
+      {
+        "date": "2021-09",
+        "share": 0.183214
+      },
+      {
+        "date": "2021-10",
+        "share": 0.164534
+      },
+      {
+        "date": "2021-11",
+        "share": 0.147425
+      },
+      {
+        "date": "2021-12",
+        "share": 0.104728
+      },
+      {
+        "date": "2022-01",
+        "share": 0.101894
+      },
+      {
+        "date": "2022-02",
+        "share": 0.09913
+      },
+      {
+        "date": "2022-03",
+        "share": 0.11167
+      },
+      {
+        "date": "2022-04",
+        "share": 0.098631
+      },
+      {
+        "date": "2022-05",
+        "share": 0.118142
+      },
+      {
+        "date": "2022-06",
+        "share": 0.138089
+      },
+      {
+        "date": "2022-07",
+        "share": 0.178338
+      },
+      {
+        "date": "2022-08",
+        "share": 0.189301
+      },
+      {
+        "date": "2022-09",
+        "share": 0.214241
+      },
+      {
+        "date": "2022-10",
+        "share": 0.237538
+      },
+      {
+        "date": "2022-11",
+        "share": 0.218415
+      },
+      {
+        "date": "2022-12",
+        "share": 0.160988
+      },
+      {
+        "date": "2023-01",
+        "share": 0.118275
+      },
+      {
+        "date": "2023-02",
+        "share": 0.07764
+      },
+      {
+        "date": "2023-03",
+        "share": 0.107645
+      },
+      {
+        "date": "2023-04",
+        "share": 0.086356
+      },
+      {
+        "date": "2023-05",
+        "share": 0.087493
+      },
+      {
+        "date": "2023-06",
+        "share": 0.066913
+      },
+      {
+        "date": "2023-07",
+        "share": 0.083069
+      },
+      {
+        "date": "2023-08",
+        "share": 0.135405
+      },
+      {
+        "date": "2023-09",
+        "share": 0.169379
+      },
+      {
+        "date": "2023-10",
+        "share": 0.170677
+      },
+      {
+        "date": "2023-11",
+        "share": 0.152663
+      },
+      {
+        "date": "2023-12",
+        "share": 0.103859
+      },
+      {
+        "date": "2024-01",
+        "share": 0.080588
+      },
+      {
+        "date": "2024-02",
+        "share": 0.053639
+      },
+      {
+        "date": "2024-03",
+        "share": 0.082637
+      },
+      {
+        "date": "2024-04",
+        "share": 0.083354
+      },
+      {
+        "date": "2024-05",
+        "share": 0.103624
+      },
+      {
+        "date": "2024-06",
+        "share": 0.138921
+      },
+      {
+        "date": "2024-07",
+        "share": 0.187737
+      },
+      {
+        "date": "2024-08",
+        "share": 0.188841
+      },
+      {
+        "date": "2024-09",
+        "share": 0.1726
+      },
+      {
+        "date": "2024-10",
+        "share": 0.144572
+      },
+      {
+        "date": "2024-11",
+        "share": 0.173604
+      },
+      {
+        "date": "2024-12",
+        "share": 0.121582
+      },
+      {
+        "date": "2025-01",
+        "share": 0.09709
+      },
+      {
+        "date": "2025-02",
+        "share": 0.058995
+      },
+      {
+        "date": "2025-03",
+        "share": 0.070346
+      },
+      {
+        "date": "2025-04",
+        "share": 0.082596
+      },
+      {
+        "date": "2025-05",
+        "share": 0.11025
+      },
+      {
+        "date": "2025-06",
+        "share": 0.155267
+      },
+      {
+        "date": "2025-07",
+        "share": 0.173278
+      },
+      {
+        "date": "2025-08",
+        "share": 0.175612
+      },
+      {
+        "date": "2025-09",
+        "share": 0.155585
+      },
+      {
+        "date": "2025-10",
+        "share": 0.180878
+      },
+      {
+        "date": "2025-11",
+        "share": 0.157146
+      },
+      {
+        "date": "2025-12",
+        "share": 0.178667
+      },
+      {
+        "date": "2026-01",
+        "share": 0.160149
+      },
+      {
+        "date": "2026-02",
+        "share": 0.153101
+      },
+      {
+        "date": "2026-03",
+        "share": 0.112963
+      },
+      {
+        "date": "2026-04",
+        "share": 0.082283
+      },
+      {
+        "date": "2026-05",
+        "share": 0.09436
+      },
+      {
+        "date": "2026-06",
+        "share": 0.138374
+      },
+      {
+        "date": "2026-07",
+        "share": 0.192864
+      }
+    ],
+    "homeValues": [
+      {
+        "date": "2000-01",
+        "middle": 392546.18,
+        "bottom": 211532.37
+      },
+      {
+        "date": "2000-02",
+        "middle": 395488.84,
+        "bottom": 212902.69
+      },
+      {
+        "date": "2000-03",
+        "middle": 398010.42,
+        "bottom": 214257.42
+      },
+      {
+        "date": "2000-04",
+        "middle": 402328.08,
+        "bottom": 216531.38
+      },
+      {
+        "date": "2000-05",
+        "middle": 405377.79,
+        "bottom": 218287.88
+      },
+      {
+        "date": "2000-06",
+        "middle": 407810.32,
+        "bottom": 219863.78
+      },
+      {
+        "date": "2000-07",
+        "middle": 409837.12,
+        "bottom": 221294.52
+      },
+      {
+        "date": "2000-08",
+        "middle": 411489.07,
+        "bottom": 222712.61
+      },
+      {
+        "date": "2000-09",
+        "middle": 413446.61,
+        "bottom": 224419.61
+      },
+      {
+        "date": "2000-10",
+        "middle": 416230.67,
+        "bottom": 226819.68
+      },
+      {
+        "date": "2000-11",
+        "middle": 419945.37,
+        "bottom": 229761.75
+      },
+      {
+        "date": "2000-12",
+        "middle": 424165.69,
+        "bottom": 232757.15
+      },
+      {
+        "date": "2001-01",
+        "middle": 428411.41,
+        "bottom": 235457.75
+      },
+      {
+        "date": "2001-02",
+        "middle": 432469.21,
+        "bottom": 237909.19
+      },
+      {
+        "date": "2001-03",
+        "middle": 435917.6,
+        "bottom": 239819.16
+      },
+      {
+        "date": "2001-04",
+        "middle": 438980.85,
+        "bottom": 241505.15
+      },
+      {
+        "date": "2001-05",
+        "middle": 441485.11,
+        "bottom": 242946.38
+      },
+      {
+        "date": "2001-06",
+        "middle": 443459.07,
+        "bottom": 244254.12
+      },
+      {
+        "date": "2001-07",
+        "middle": 445651.86,
+        "bottom": 245685.12
+      },
+      {
+        "date": "2001-08",
+        "middle": 449444.99,
+        "bottom": 247255.22
+      },
+      {
+        "date": "2001-09",
+        "middle": 453233.81,
+        "bottom": 248607.64
+      },
+      {
+        "date": "2001-10",
+        "middle": 457055.7,
+        "bottom": 249787.86
+      },
+      {
+        "date": "2001-11",
+        "middle": 460260.02,
+        "bottom": 251033.46
+      },
+      {
+        "date": "2001-12",
+        "middle": 463984.19,
+        "bottom": 252699.5
+      },
+      {
+        "date": "2002-01",
+        "middle": 467724.59,
+        "bottom": 254772.6
+      },
+      {
+        "date": "2002-02",
+        "middle": 470954.48,
+        "bottom": 256694.42
+      },
+      {
+        "date": "2002-03",
+        "middle": 473991.73,
+        "bottom": 258697.97
+      },
+      {
+        "date": "2002-04",
+        "middle": 477600.02,
+        "bottom": 260856.65
+      },
+      {
+        "date": "2002-05",
+        "middle": 481043.36,
+        "bottom": 262791.16
+      },
+      {
+        "date": "2002-06",
+        "middle": 484644,
+        "bottom": 264911.24
+      },
+      {
+        "date": "2002-07",
+        "middle": 487483.07,
+        "bottom": 266655.34
+      },
+      {
+        "date": "2002-08",
+        "middle": 490855.31,
+        "bottom": 269265.12
+      },
+      {
+        "date": "2002-09",
+        "middle": 494737.95,
+        "bottom": 272161.09
+      },
+      {
+        "date": "2002-10",
+        "middle": 499966.03,
+        "bottom": 275845.15
+      },
+      {
+        "date": "2002-11",
+        "middle": 505530.25,
+        "bottom": 279468.03
+      },
+      {
+        "date": "2002-12",
+        "middle": 511208.71,
+        "bottom": 282936.98
+      },
+      {
+        "date": "2003-01",
+        "middle": 516153.8,
+        "bottom": 286125.8
+      },
+      {
+        "date": "2003-02",
+        "middle": 520800.53,
+        "bottom": 289261.81
+      },
+      {
+        "date": "2003-03",
+        "middle": 525419.66,
+        "bottom": 292361.03
+      },
+      {
+        "date": "2003-04",
+        "middle": 531109.11,
+        "bottom": 295752.48
+      },
+      {
+        "date": "2003-05",
+        "middle": 537935.3,
+        "bottom": 299878.93
+      },
+      {
+        "date": "2003-06",
+        "middle": 544231.92,
+        "bottom": 303980.88
+      },
+      {
+        "date": "2003-07",
+        "middle": 549782.76,
+        "bottom": 307928.88
+      },
+      {
+        "date": "2003-08",
+        "middle": 554302.95,
+        "bottom": 310859.26
+      },
+      {
+        "date": "2003-09",
+        "middle": 559177.21,
+        "bottom": 313854.81
+      },
+      {
+        "date": "2003-10",
+        "middle": 563561.47,
+        "bottom": 316599.74
+      },
+      {
+        "date": "2003-11",
+        "middle": 567484.14,
+        "bottom": 319237.36
+      },
+      {
+        "date": "2003-12",
+        "middle": 571280.57,
+        "bottom": 321868.85
+      },
+      {
+        "date": "2004-01",
+        "middle": 574820.28,
+        "bottom": 324237.04
+      },
+      {
+        "date": "2004-02",
+        "middle": 578491.89,
+        "bottom": 326557.69
+      },
+      {
+        "date": "2004-03",
+        "middle": 582550.68,
+        "bottom": 329225.09
+      },
+      {
+        "date": "2004-04",
+        "middle": 586618.14,
+        "bottom": 331672.84
+      },
+      {
+        "date": "2004-05",
+        "middle": 592014.29,
+        "bottom": 334625.23
+      },
+      {
+        "date": "2004-06",
+        "middle": 597266.45,
+        "bottom": 336821.69
+      },
+      {
+        "date": "2004-07",
+        "middle": 604170.67,
+        "bottom": 339832.01
+      },
+      {
+        "date": "2004-08",
+        "middle": 610039.09,
+        "bottom": 342874.66
+      },
+      {
+        "date": "2004-09",
+        "middle": 615557.63,
+        "bottom": 346014.26
+      },
+      {
+        "date": "2004-10",
+        "middle": 621887.97,
+        "bottom": 349523.37
+      },
+      {
+        "date": "2004-11",
+        "middle": 629325.36,
+        "bottom": 353467.78
+      },
+      {
+        "date": "2004-12",
+        "middle": 637706.33,
+        "bottom": 357803.68
+      },
+      {
+        "date": "2005-01",
+        "middle": 644260.19,
+        "bottom": 361434.63
+      },
+      {
+        "date": "2005-02",
+        "middle": 650440.54,
+        "bottom": 364943.9
+      },
+      {
+        "date": "2005-03",
+        "middle": 656740.34,
+        "bottom": 368646.19
+      },
+      {
+        "date": "2005-04",
+        "middle": 662187.6,
+        "bottom": 372218.7
+      },
+      {
+        "date": "2005-05",
+        "middle": 666580.03,
+        "bottom": 375207.35
+      },
+      {
+        "date": "2005-06",
+        "middle": 671534.67,
+        "bottom": 378918.17
+      },
+      {
+        "date": "2005-07",
+        "middle": 676756.23,
+        "bottom": 382198.87
+      },
+      {
+        "date": "2005-08",
+        "middle": 681310.48,
+        "bottom": 385136.56
+      },
+      {
+        "date": "2005-09",
+        "middle": 684266.1,
+        "bottom": 386503.34
+      },
+      {
+        "date": "2005-10",
+        "middle": 685716.26,
+        "bottom": 387375.09
+      },
+      {
+        "date": "2005-11",
+        "middle": 688821.92,
+        "bottom": 388613.21
+      },
+      {
+        "date": "2005-12",
+        "middle": 692309.39,
+        "bottom": 390297.4
+      },
+      {
+        "date": "2006-01",
+        "middle": 696587.62,
+        "bottom": 392171.02
+      },
+      {
+        "date": "2006-02",
+        "middle": 699428.69,
+        "bottom": 393539.18
+      },
+      {
+        "date": "2006-03",
+        "middle": 701110.42,
+        "bottom": 394520.37
+      },
+      {
+        "date": "2006-04",
+        "middle": 703817.26,
+        "bottom": 396024.99
+      },
+      {
+        "date": "2006-05",
+        "middle": 704804.48,
+        "bottom": 396681.69
+      },
+      {
+        "date": "2006-06",
+        "middle": 704979.36,
+        "bottom": 396726.4
+      },
+      {
+        "date": "2006-07",
+        "middle": 702330.12,
+        "bottom": 395876.15
+      },
+      {
+        "date": "2006-08",
+        "middle": 699461.46,
+        "bottom": 394843.34
+      },
+      {
+        "date": "2006-09",
+        "middle": 695737.83,
+        "bottom": 393226.51
+      },
+      {
+        "date": "2006-10",
+        "middle": 694237.73,
+        "bottom": 392337.74
+      },
+      {
+        "date": "2006-11",
+        "middle": 692994.57,
+        "bottom": 391871.66
+      },
+      {
+        "date": "2006-12",
+        "middle": 692837.84,
+        "bottom": 392175.64
+      },
+      {
+        "date": "2007-01",
+        "middle": 689876.6,
+        "bottom": 390802.46
+      },
+      {
+        "date": "2007-02",
+        "middle": 687936.25,
+        "bottom": 389764.73
+      },
+      {
+        "date": "2007-03",
+        "middle": 685498.83,
+        "bottom": 388340.71
+      },
+      {
+        "date": "2007-04",
+        "middle": 684777.9,
+        "bottom": 387955.72
+      },
+      {
+        "date": "2007-05",
+        "middle": 683780.45,
+        "bottom": 387446.56
+      },
+      {
+        "date": "2007-06",
+        "middle": 683005.92,
+        "bottom": 387101.74
+      },
+      {
+        "date": "2007-07",
+        "middle": 682552.66,
+        "bottom": 386824.68
+      },
+      {
+        "date": "2007-08",
+        "middle": 681521.75,
+        "bottom": 386021.61
+      },
+      {
+        "date": "2007-09",
+        "middle": 680373.92,
+        "bottom": 385245.57
+      },
+      {
+        "date": "2007-10",
+        "middle": 678698.65,
+        "bottom": 384277.54
+      },
+      {
+        "date": "2007-11",
+        "middle": 675133.66,
+        "bottom": 382677.75
+      },
+      {
+        "date": "2007-12",
+        "middle": 672148.32,
+        "bottom": 381321.44
+      },
+      {
+        "date": "2008-01",
+        "middle": 670339.88,
+        "bottom": 380725.61
+      },
+      {
+        "date": "2008-02",
+        "middle": 669099.12,
+        "bottom": 380613.01
+      },
+      {
+        "date": "2008-03",
+        "middle": 666278.98,
+        "bottom": 379647.07
+      },
+      {
+        "date": "2008-04",
+        "middle": 662241.69,
+        "bottom": 377850.22
+      },
+      {
+        "date": "2008-05",
+        "middle": 660185.87,
+        "bottom": 376584.46
+      },
+      {
+        "date": "2008-06",
+        "middle": 659049.53,
+        "bottom": 375531.9
+      },
+      {
+        "date": "2008-07",
+        "middle": 657581.54,
+        "bottom": 374102.09
+      },
+      {
+        "date": "2008-08",
+        "middle": 654160.27,
+        "bottom": 371431.15
+      },
+      {
+        "date": "2008-09",
+        "middle": 649805.25,
+        "bottom": 368290.67
+      },
+      {
+        "date": "2008-10",
+        "middle": 643779.52,
+        "bottom": 364660.61
+      },
+      {
+        "date": "2008-11",
+        "middle": 642954.81,
+        "bottom": 366191.59
+      },
+      {
+        "date": "2008-12",
+        "middle": 641655.14,
+        "bottom": 368496.6
+      },
+      {
+        "date": "2009-01",
+        "middle": 641675.87,
+        "bottom": 371746.75
+      },
+      {
+        "date": "2009-02",
+        "middle": 637742.5,
+        "bottom": 370885.19
+      },
+      {
+        "date": "2009-03",
+        "middle": 633430.24,
+        "bottom": 369261.85
+      },
+      {
+        "date": "2009-04",
+        "middle": 628281.09,
+        "bottom": 367044.88
+      },
+      {
+        "date": "2009-05",
+        "middle": 623205.17,
+        "bottom": 364754.95
+      },
+      {
+        "date": "2009-06",
+        "middle": 619729.94,
+        "bottom": 363514.99
+      },
+      {
+        "date": "2009-07",
+        "middle": 617246.43,
+        "bottom": 363106.34
+      },
+      {
+        "date": "2009-08",
+        "middle": 616043.78,
+        "bottom": 364208.37
+      },
+      {
+        "date": "2009-09",
+        "middle": 614366.04,
+        "bottom": 364634.72
+      },
+      {
+        "date": "2009-10",
+        "middle": 613034.96,
+        "bottom": 364150.91
+      },
+      {
+        "date": "2009-11",
+        "middle": 610810.61,
+        "bottom": 362575.36
+      },
+      {
+        "date": "2009-12",
+        "middle": 609287.72,
+        "bottom": 361659.36
+      },
+      {
+        "date": "2010-01",
+        "middle": 606631.1,
+        "bottom": 359721.47
+      },
+      {
+        "date": "2010-02",
+        "middle": 604426.67,
+        "bottom": 357196
+      },
+      {
+        "date": "2010-03",
+        "middle": 603900.23,
+        "bottom": 354554.2
+      },
+      {
+        "date": "2010-04",
+        "middle": 605781.15,
+        "bottom": 353926.43
+      },
+      {
+        "date": "2010-05",
+        "middle": 608277.79,
+        "bottom": 354514.9
+      },
+      {
+        "date": "2010-06",
+        "middle": 608652.73,
+        "bottom": 354583.14
+      },
+      {
+        "date": "2010-07",
+        "middle": 607389.94,
+        "bottom": 353954.25
+      },
+      {
+        "date": "2010-08",
+        "middle": 603797.24,
+        "bottom": 351096.36
+      },
+      {
+        "date": "2010-09",
+        "middle": 599772.39,
+        "bottom": 348055.76
+      },
+      {
+        "date": "2010-10",
+        "middle": 594594.43,
+        "bottom": 344901.59
+      },
+      {
+        "date": "2010-11",
+        "middle": 588941.51,
+        "bottom": 341826.55
+      },
+      {
+        "date": "2010-12",
+        "middle": 585042.98,
+        "bottom": 339771.5
+      },
+      {
+        "date": "2011-01",
+        "middle": 584481.09,
+        "bottom": 338941.56
+      },
+      {
+        "date": "2011-02",
+        "middle": 585524.34,
+        "bottom": 339333.51
+      },
+      {
+        "date": "2011-03",
+        "middle": 585536.48,
+        "bottom": 339306.11
+      },
+      {
+        "date": "2011-04",
+        "middle": 583346.7,
+        "bottom": 338413.22
+      },
+      {
+        "date": "2011-05",
+        "middle": 582226.72,
+        "bottom": 338231.19
+      },
+      {
+        "date": "2011-06",
+        "middle": 582848.8,
+        "bottom": 338577.89
+      },
+      {
+        "date": "2011-07",
+        "middle": 583762.19,
+        "bottom": 338709.21
+      },
+      {
+        "date": "2011-08",
+        "middle": 583511.08,
+        "bottom": 338030.16
+      },
+      {
+        "date": "2011-09",
+        "middle": 582063.22,
+        "bottom": 336772.47
+      },
+      {
+        "date": "2011-10",
+        "middle": 580513.64,
+        "bottom": 335476.23
+      },
+      {
+        "date": "2011-11",
+        "middle": 578467.09,
+        "bottom": 333528.41
+      },
+      {
+        "date": "2011-12",
+        "middle": 574534.78,
+        "bottom": 330776.42
+      },
+      {
+        "date": "2012-01",
+        "middle": 570932.8,
+        "bottom": 328196.94
+      },
+      {
+        "date": "2012-02",
+        "middle": 568628.89,
+        "bottom": 327060.82
+      },
+      {
+        "date": "2012-03",
+        "middle": 569925.1,
+        "bottom": 328287.43
+      },
+      {
+        "date": "2012-04",
+        "middle": 571928.55,
+        "bottom": 330333.43
+      },
+      {
+        "date": "2012-05",
+        "middle": 573944.55,
+        "bottom": 332304.16
+      },
+      {
+        "date": "2012-06",
+        "middle": 574984.11,
+        "bottom": 333602.4
+      },
+      {
+        "date": "2012-07",
+        "middle": 575467.26,
+        "bottom": 334560.01
+      },
+      {
+        "date": "2012-08",
+        "middle": 575296.05,
+        "bottom": 334996.75
+      },
+      {
+        "date": "2012-09",
+        "middle": 573886.16,
+        "bottom": 334515.94
+      },
+      {
+        "date": "2012-10",
+        "middle": 571846.21,
+        "bottom": 333686.4
+      },
+      {
+        "date": "2012-11",
+        "middle": 570160.06,
+        "bottom": 332886.56
+      },
+      {
+        "date": "2012-12",
+        "middle": 569649.44,
+        "bottom": 332667.1
+      },
+      {
+        "date": "2013-01",
+        "middle": 569807.16,
+        "bottom": 332667.51
+      },
+      {
+        "date": "2013-02",
+        "middle": 570821.31,
+        "bottom": 333479.36
+      },
+      {
+        "date": "2013-03",
+        "middle": 572652.44,
+        "bottom": 335019.84
+      },
+      {
+        "date": "2013-04",
+        "middle": 575230.08,
+        "bottom": 337280.97
+      },
+      {
+        "date": "2013-05",
+        "middle": 577856.49,
+        "bottom": 339609.52
+      },
+      {
+        "date": "2013-06",
+        "middle": 579724.97,
+        "bottom": 341540.69
+      },
+      {
+        "date": "2013-07",
+        "middle": 580962.38,
+        "bottom": 342871
+      },
+      {
+        "date": "2013-08",
+        "middle": 581949.99,
+        "bottom": 343902.27
+      },
+      {
+        "date": "2013-09",
+        "middle": 583282.52,
+        "bottom": 344989.06
+      },
+      {
+        "date": "2013-10",
+        "middle": 585729.85,
+        "bottom": 346641.02
+      },
+      {
+        "date": "2013-11",
+        "middle": 588708.53,
+        "bottom": 348013.2
+      },
+      {
+        "date": "2013-12",
+        "middle": 591464.28,
+        "bottom": 349135.33
+      },
+      {
+        "date": "2014-01",
+        "middle": 592977.22,
+        "bottom": 349694.6
+      },
+      {
+        "date": "2014-02",
+        "middle": 593369.62,
+        "bottom": 350331.62
+      },
+      {
+        "date": "2014-03",
+        "middle": 593344.54,
+        "bottom": 350873.33
+      },
+      {
+        "date": "2014-04",
+        "middle": 594358.37,
+        "bottom": 351935.03
+      },
+      {
+        "date": "2014-05",
+        "middle": 595764.64,
+        "bottom": 353235.79
+      },
+      {
+        "date": "2014-06",
+        "middle": 596813,
+        "bottom": 354242.76
+      },
+      {
+        "date": "2014-07",
+        "middle": 597338.96,
+        "bottom": 354877.24
+      },
+      {
+        "date": "2014-08",
+        "middle": 597233.63,
+        "bottom": 355157.33
+      },
+      {
+        "date": "2014-09",
+        "middle": 597024.59,
+        "bottom": 355274.93
+      },
+      {
+        "date": "2014-10",
+        "middle": 595141.67,
+        "bottom": 354607.93
+      },
+      {
+        "date": "2014-11",
+        "middle": 592335.29,
+        "bottom": 353176.75
+      },
+      {
+        "date": "2014-12",
+        "middle": 588386.87,
+        "bottom": 351339.43
+      },
+      {
+        "date": "2015-01",
+        "middle": 585700.15,
+        "bottom": 349782.83
+      },
+      {
+        "date": "2015-02",
+        "middle": 584731.13,
+        "bottom": 349043.34
+      },
+      {
+        "date": "2015-03",
+        "middle": 586533.16,
+        "bottom": 349675.66
+      },
+      {
+        "date": "2015-04",
+        "middle": 588162.01,
+        "bottom": 350621.58
+      },
+      {
+        "date": "2015-05",
+        "middle": 589049.92,
+        "bottom": 351230.58
+      },
+      {
+        "date": "2015-06",
+        "middle": 588233.85,
+        "bottom": 350755.27
+      },
+      {
+        "date": "2015-07",
+        "middle": 587969.6,
+        "bottom": 350727.83
+      },
+      {
+        "date": "2015-08",
+        "middle": 588742.63,
+        "bottom": 351522.15
+      },
+      {
+        "date": "2015-09",
+        "middle": 589974.52,
+        "bottom": 352822.06
+      },
+      {
+        "date": "2015-10",
+        "middle": 591380.06,
+        "bottom": 354169.8
+      },
+      {
+        "date": "2015-11",
+        "middle": 592395.97,
+        "bottom": 354987.82
+      },
+      {
+        "date": "2015-12",
+        "middle": 593240.2,
+        "bottom": 355416.05
+      },
+      {
+        "date": "2016-01",
+        "middle": 593510.48,
+        "bottom": 355469.08
+      },
+      {
+        "date": "2016-02",
+        "middle": 593942.22,
+        "bottom": 355670.23
+      },
+      {
+        "date": "2016-03",
+        "middle": 594021.46,
+        "bottom": 356105.57
+      },
+      {
+        "date": "2016-04",
+        "middle": 593779.09,
+        "bottom": 356414.87
+      },
+      {
+        "date": "2016-05",
+        "middle": 592791.32,
+        "bottom": 356632.32
+      },
+      {
+        "date": "2016-06",
+        "middle": 592023.07,
+        "bottom": 356874.62
+      },
+      {
+        "date": "2016-07",
+        "middle": 591505.14,
+        "bottom": 357072.84
+      },
+      {
+        "date": "2016-08",
+        "middle": 590531.82,
+        "bottom": 356876.22
+      },
+      {
+        "date": "2016-09",
+        "middle": 589099.26,
+        "bottom": 356356.47
+      },
+      {
+        "date": "2016-10",
+        "middle": 588608.45,
+        "bottom": 356608.23
+      },
+      {
+        "date": "2016-11",
+        "middle": 588609.02,
+        "bottom": 356820.22
+      },
+      {
+        "date": "2016-12",
+        "middle": 590449.16,
+        "bottom": 357885.57
+      },
+      {
+        "date": "2017-01",
+        "middle": 591259.24,
+        "bottom": 358069.72
+      },
+      {
+        "date": "2017-02",
+        "middle": 592077.72,
+        "bottom": 358618.81
+      },
+      {
+        "date": "2017-03",
+        "middle": 592906.81,
+        "bottom": 359466.64
+      },
+      {
+        "date": "2017-04",
+        "middle": 595611.67,
+        "bottom": 361618.99
+      },
+      {
+        "date": "2017-05",
+        "middle": 597925.02,
+        "bottom": 363475.34
+      },
+      {
+        "date": "2017-06",
+        "middle": 597975.14,
+        "bottom": 363844.83
+      },
+      {
+        "date": "2017-07",
+        "middle": 596486.14,
+        "bottom": 363054.51
+      },
+      {
+        "date": "2017-08",
+        "middle": 594863.77,
+        "bottom": 362148.97
+      },
+      {
+        "date": "2017-09",
+        "middle": 593801.08,
+        "bottom": 361632.31
+      },
+      {
+        "date": "2017-10",
+        "middle": 592644.66,
+        "bottom": 361394.04
+      },
+      {
+        "date": "2017-11",
+        "middle": 592313.42,
+        "bottom": 361663.78
+      },
+      {
+        "date": "2017-12",
+        "middle": 592436.55,
+        "bottom": 362048.96
+      },
+      {
+        "date": "2018-01",
+        "middle": 592353.91,
+        "bottom": 362031.58
+      },
+      {
+        "date": "2018-02",
+        "middle": 591834.97,
+        "bottom": 361680.37
+      },
+      {
+        "date": "2018-03",
+        "middle": 591659.72,
+        "bottom": 361550.05
+      },
+      {
+        "date": "2018-04",
+        "middle": 592035.7,
+        "bottom": 361732
+      },
+      {
+        "date": "2018-05",
+        "middle": 592496.33,
+        "bottom": 362107.67
+      },
+      {
+        "date": "2018-06",
+        "middle": 591884.06,
+        "bottom": 362102.32
+      },
+      {
+        "date": "2018-07",
+        "middle": 590459.1,
+        "bottom": 361819.1
+      },
+      {
+        "date": "2018-08",
+        "middle": 589549.1,
+        "bottom": 361849.34
+      },
+      {
+        "date": "2018-09",
+        "middle": 589109.2,
+        "bottom": 362030.54
+      },
+      {
+        "date": "2018-10",
+        "middle": 588896.01,
+        "bottom": 362107.66
+      },
+      {
+        "date": "2018-11",
+        "middle": 588337.41,
+        "bottom": 361872.41
+      },
+      {
+        "date": "2018-12",
+        "middle": 587740.69,
+        "bottom": 361530.17
+      },
+      {
+        "date": "2019-01",
+        "middle": 586238.41,
+        "bottom": 360849.77
+      },
+      {
+        "date": "2019-02",
+        "middle": 584872.69,
+        "bottom": 360296.04
+      },
+      {
+        "date": "2019-03",
+        "middle": 583846.97,
+        "bottom": 359948.28
+      },
+      {
+        "date": "2019-04",
+        "middle": 584118.91,
+        "bottom": 360250.96
+      },
+      {
+        "date": "2019-05",
+        "middle": 583337.04,
+        "bottom": 360212.01
+      },
+      {
+        "date": "2019-06",
+        "middle": 582053.08,
+        "bottom": 360162.89
+      },
+      {
+        "date": "2019-07",
+        "middle": 580888.67,
+        "bottom": 360437.59
+      },
+      {
+        "date": "2019-08",
+        "middle": 580566.87,
+        "bottom": 361055.13
+      },
+      {
+        "date": "2019-09",
+        "middle": 579470.18,
+        "bottom": 361089.25
+      },
+      {
+        "date": "2019-10",
+        "middle": 578040.66,
+        "bottom": 360732.81
+      },
+      {
+        "date": "2019-11",
+        "middle": 576759.69,
+        "bottom": 360430.11
+      },
+      {
+        "date": "2019-12",
+        "middle": 577050.06,
+        "bottom": 360920.6
+      },
+      {
+        "date": "2020-01",
+        "middle": 578126.83,
+        "bottom": 362552.29
+      },
+      {
+        "date": "2020-02",
+        "middle": 579339.91,
+        "bottom": 364533.56
+      },
+      {
+        "date": "2020-03",
+        "middle": 580572.45,
+        "bottom": 366887.01
+      },
+      {
+        "date": "2020-04",
+        "middle": 581177.47,
+        "bottom": 368423.97
+      },
+      {
+        "date": "2020-05",
+        "middle": 580098.04,
+        "bottom": 368468.08
+      },
+      {
+        "date": "2020-06",
+        "middle": 577302.86,
+        "bottom": 367061.85
+      },
+      {
+        "date": "2020-07",
+        "middle": 574978.54,
+        "bottom": 365489.92
+      },
+      {
+        "date": "2020-08",
+        "middle": 576162.01,
+        "bottom": 365970.29
+      },
+      {
+        "date": "2020-09",
+        "middle": 582002.57,
+        "bottom": 369345.5
+      },
+      {
+        "date": "2020-10",
+        "middle": 591621.27,
+        "bottom": 375127.09
+      },
+      {
+        "date": "2020-11",
+        "middle": 603998.35,
+        "bottom": 382545.3
+      },
+      {
+        "date": "2020-12",
+        "middle": 618243.99,
+        "bottom": 390858.95
+      },
+      {
+        "date": "2021-01",
+        "middle": 632171.8,
+        "bottom": 398714.67
+      },
+      {
+        "date": "2021-02",
+        "middle": 645799.18,
+        "bottom": 406311.58
+      },
+      {
+        "date": "2021-03",
+        "middle": 657868.33,
+        "bottom": 413094.9
+      },
+      {
+        "date": "2021-04",
+        "middle": 670518.78,
+        "bottom": 420233.92
+      },
+      {
+        "date": "2021-05",
+        "middle": 683242.08,
+        "bottom": 427338.34
+      },
+      {
+        "date": "2021-06",
+        "middle": 696336.2,
+        "bottom": 434646.77
+      },
+      {
+        "date": "2021-07",
+        "middle": 705699.24,
+        "bottom": 439600.75
+      },
+      {
+        "date": "2021-08",
+        "middle": 709615.17,
+        "bottom": 441375.43
+      },
+      {
+        "date": "2021-09",
+        "middle": 709114.4,
+        "bottom": 439843.93
+      },
+      {
+        "date": "2021-10",
+        "middle": 707634.53,
+        "bottom": 437871.87
+      },
+      {
+        "date": "2021-11",
+        "middle": 708419.65,
+        "bottom": 437342.97
+      },
+      {
+        "date": "2021-12",
+        "middle": 712279.51,
+        "bottom": 439561.54
+      },
+      {
+        "date": "2022-01",
+        "middle": 718957.81,
+        "bottom": 444723.19
+      },
+      {
+        "date": "2022-02",
+        "middle": 727532.66,
+        "bottom": 451864.79
+      },
+      {
+        "date": "2022-03",
+        "middle": 737625.27,
+        "bottom": 459692.95
+      },
+      {
+        "date": "2022-04",
+        "middle": 750024.56,
+        "bottom": 467903.74
+      },
+      {
+        "date": "2022-05",
+        "middle": 763186.22,
+        "bottom": 475685.01
+      },
+      {
+        "date": "2022-06",
+        "middle": 775562.76,
+        "bottom": 482716.18
+      },
+      {
+        "date": "2022-07",
+        "middle": 783307.2,
+        "bottom": 487321.94
+      },
+      {
+        "date": "2022-08",
+        "middle": 785517.17,
+        "bottom": 488772.25
+      },
+      {
+        "date": "2022-09",
+        "middle": 783183.85,
+        "bottom": 487922.48
+      },
+      {
+        "date": "2022-10",
+        "middle": 780221.34,
+        "bottom": 486713.48
+      },
+      {
+        "date": "2022-11",
+        "middle": 779544,
+        "bottom": 487056.17
+      },
+      {
+        "date": "2022-12",
+        "middle": 780237.27,
+        "bottom": 487722.64
+      },
+      {
+        "date": "2023-01",
+        "middle": 782023.97,
+        "bottom": 488237.69
+      },
+      {
+        "date": "2023-02",
+        "middle": 784943.75,
+        "bottom": 488685.6
+      },
+      {
+        "date": "2023-03",
+        "middle": 788297.47,
+        "bottom": 490253.31
+      },
+      {
+        "date": "2023-04",
+        "middle": 794283.23,
+        "bottom": 493520.72
+      },
+      {
+        "date": "2023-05",
+        "middle": 801560.27,
+        "bottom": 498033.8
+      },
+      {
+        "date": "2023-06",
+        "middle": 810491.32,
+        "bottom": 503388.61
+      },
+      {
+        "date": "2023-07",
+        "middle": 820490.93,
+        "bottom": 510064.5
+      },
+      {
+        "date": "2023-08",
+        "middle": 832526.11,
+        "bottom": 518482.23
+      },
+      {
+        "date": "2023-09",
+        "middle": 847593.43,
+        "bottom": 528529.83
+      },
+      {
+        "date": "2023-10",
+        "middle": 861542.5,
+        "bottom": 537622.91
+      },
+      {
+        "date": "2023-11",
+        "middle": 873869.14,
+        "bottom": 545759.5
+      },
+      {
+        "date": "2023-12",
+        "middle": 883232.68,
+        "bottom": 552436.88
+      },
+      {
+        "date": "2024-01",
+        "middle": 891723.28,
+        "bottom": 558838.21
+      },
+      {
+        "date": "2024-02",
+        "middle": 899703.22,
+        "bottom": 564756.07
+      },
+      {
+        "date": "2024-03",
+        "middle": 909880.13,
+        "bottom": 571820.25
+      },
+      {
+        "date": "2024-04",
+        "middle": 920568.32,
+        "bottom": 578956.49
+      },
+      {
+        "date": "2024-05",
+        "middle": 929816.05,
+        "bottom": 584784.34
+      },
+      {
+        "date": "2024-06",
+        "middle": 934289.53,
+        "bottom": 587501.93
+      },
+      {
+        "date": "2024-07",
+        "middle": 935516.45,
+        "bottom": 588675.04
+      },
+      {
+        "date": "2024-08",
+        "middle": 935540.3,
+        "bottom": 589711.54
+      },
+      {
+        "date": "2024-09",
+        "middle": 935995.02,
+        "bottom": 591068.24
+      },
+      {
+        "date": "2024-10",
+        "middle": 936477.56,
+        "bottom": 592002.31
+      },
+      {
+        "date": "2024-11",
+        "middle": 934689.76,
+        "bottom": 591563.93
+      },
+      {
+        "date": "2024-12",
+        "middle": 931356.54,
+        "bottom": 590758.55
+      },
+      {
+        "date": "2025-01",
+        "middle": 928449.22,
+        "bottom": 590340.88
+      },
+      {
+        "date": "2025-02",
+        "middle": 927712.2,
+        "bottom": 590801.09
+      },
+      {
+        "date": "2025-03",
+        "middle": 929736.4,
+        "bottom": 591891.55
+      },
+      {
+        "date": "2025-04",
+        "middle": 933949.16,
+        "bottom": 593500.88
+      },
+      {
+        "date": "2025-05",
+        "middle": 939280.29,
+        "bottom": 595679.41
+      },
+      {
+        "date": "2025-06",
+        "middle": 944910.29,
+        "bottom": 598034.77
+      },
+      {
+        "date": "2025-07",
+        "middle": 950663.44,
+        "bottom": 600716.43
+      },
+      {
+        "date": "2025-08",
+        "middle": 954887.86,
+        "bottom": 602738.33
+      },
+      {
+        "date": "2025-09",
+        "middle": 958764.86,
+        "bottom": 605135.08
+      },
+      {
+        "date": "2025-10",
+        "middle": 963379.46,
+        "bottom": 608302.73
+      },
+      {
+        "date": "2025-11",
+        "middle": 970083.88,
+        "bottom": 612768.16
+      },
+      {
+        "date": "2025-12",
+        "middle": 977105.27,
+        "bottom": 617576.38
+      },
+      {
+        "date": "2026-01",
+        "middle": 983723.95,
+        "bottom": 621943.39
+      },
+      {
+        "date": "2026-02",
+        "middle": 989864.22,
+        "bottom": 626039.72
+      },
+      {
+        "date": "2026-03",
+        "middle": 996747.17,
+        "bottom": 629977.87
+      },
+      {
+        "date": "2026-04",
+        "middle": 1001939.2,
+        "bottom": 632848.13
+      },
+      {
+        "date": "2026-05",
+        "middle": 1007595.65,
+        "bottom": 635450.2
+      },
+      {
+        "date": "2026-06",
+        "middle": 1013891.64,
+        "bottom": 638249.64
+      },
+      {
+        "date": "2026-07",
+        "middle": 1021074.38,
+        "bottom": 641606.03
+      }
+    ],
+    "saleToList": [
+      {
+        "date": "2018-03",
+        "mean": 0.965795,
+        "median": 0.969191
+      },
+      {
+        "date": "2018-04",
+        "mean": 0.966301,
+        "median": 0.969541
+      },
+      {
+        "date": "2018-05",
+        "mean": 0.969679,
+        "median": 0.97217
+      },
+      {
+        "date": "2018-06",
+        "mean": 0.970003,
+        "median": 0.97436
+      },
+      {
+        "date": "2018-07",
+        "mean": 0.972715,
+        "median": 0.976094
+      },
+      {
+        "date": "2018-08",
+        "mean": 0.972851,
+        "median": 0.975831
+      },
+      {
+        "date": "2018-09",
+        "mean": 0.971349,
+        "median": 0.974584
+      },
+      {
+        "date": "2018-10",
+        "mean": 0.969126,
+        "median": 0.973022
+      },
+      {
+        "date": "2018-11",
+        "mean": 0.96869,
+        "median": 0.972385
+      },
+      {
+        "date": "2018-12",
+        "mean": 0.967525,
+        "median": 0.971627
+      },
+      {
+        "date": "2019-01",
+        "mean": 0.965401,
+        "median": 0.970479
+      },
+      {
+        "date": "2019-02",
+        "mean": 0.960595,
+        "median": 0.967756
+      },
+      {
+        "date": "2019-03",
+        "mean": 0.961093,
+        "median": 0.967602
+      },
+      {
+        "date": "2019-04",
+        "mean": 0.964809,
+        "median": 0.969291
+      },
+      {
+        "date": "2019-05",
+        "mean": 0.970435,
+        "median": 0.973414
+      },
+      {
+        "date": "2019-06",
+        "mean": 0.973694,
+        "median": 0.975573
+      },
+      {
+        "date": "2019-07",
+        "mean": 0.974042,
+        "median": 0.976512
+      },
+      {
+        "date": "2019-08",
+        "mean": 0.973215,
+        "median": 0.97573
+      },
+      {
+        "date": "2019-09",
+        "mean": 0.968467,
+        "median": 0.97294
+      },
+      {
+        "date": "2019-10",
+        "mean": 0.966,
+        "median": 0.971416
+      },
+      {
+        "date": "2019-11",
+        "mean": 0.964705,
+        "median": 0.971006
+      },
+      {
+        "date": "2019-12",
+        "mean": 0.965493,
+        "median": 0.971624
+      },
+      {
+        "date": "2020-01",
+        "mean": 0.965675,
+        "median": 0.970578
+      },
+      {
+        "date": "2020-02",
+        "mean": 0.963378,
+        "median": 0.968319
+      },
+      {
+        "date": "2020-03",
+        "mean": 0.965968,
+        "median": 0.969654
+      },
+      {
+        "date": "2020-04",
+        "mean": 0.968491,
+        "median": 0.972374
+      },
+      {
+        "date": "2020-05",
+        "mean": 0.971759,
+        "median": 0.975225
+      },
+      {
+        "date": "2020-06",
+        "mean": 0.972298,
+        "median": 0.976922
+      },
+      {
+        "date": "2020-07",
+        "mean": 0.974869,
+        "median": 0.979504
+      },
+      {
+        "date": "2020-08",
+        "mean": 0.981434,
+        "median": 0.984649
+      },
+      {
+        "date": "2020-09",
+        "mean": 0.986408,
+        "median": 0.988099
+      },
+      {
+        "date": "2020-10",
+        "mean": 0.989532,
+        "median": 0.989965
+      },
+      {
+        "date": "2020-11",
+        "mean": 0.990732,
+        "median": 0.991055
+      },
+      {
+        "date": "2020-12",
+        "mean": 0.991423,
+        "median": 0.993431
+      },
+      {
+        "date": "2021-01",
+        "mean": 0.990187,
+        "median": 0.993545
+      },
+      {
+        "date": "2021-02",
+        "mean": 0.987189,
+        "median": 0.991846
+      },
+      {
+        "date": "2021-03",
+        "mean": 0.988281,
+        "median": 0.992679
+      },
+      {
+        "date": "2021-04",
+        "mean": 0.995315,
+        "median": 0.995916
+      },
+      {
+        "date": "2021-05",
+        "mean": 1.005255,
+        "median": 1.000089
+      },
+      {
+        "date": "2021-06",
+        "mean": 1.012802,
+        "median": 1.003712
+      },
+      {
+        "date": "2021-07",
+        "mean": 1.015448,
+        "median": 1.00675
+      },
+      {
+        "date": "2021-08",
+        "mean": 1.014785,
+        "median": 1.006713
+      },
+      {
+        "date": "2021-09",
+        "mean": 1.010621,
+        "median": 1.00309
+      },
+      {
+        "date": "2021-10",
+        "mean": 1.005355,
+        "median": 1.000052
+      },
+      {
+        "date": "2021-11",
+        "mean": 1.001805,
+        "median": 1
+      },
+      {
+        "date": "2021-12",
+        "mean": 0.999685,
+        "median": 1
+      },
+      {
+        "date": "2022-01",
+        "mean": 1.001017,
+        "median": 1
+      },
+      {
+        "date": "2022-02",
+        "mean": 1.001098,
+        "median": 1
+      },
+      {
+        "date": "2022-03",
+        "mean": 1.008851,
+        "median": 1.002616
+      },
+      {
+        "date": "2022-04",
+        "mean": 1.020046,
+        "median": 1.0128
+      },
+      {
+        "date": "2022-05",
+        "mean": 1.035811,
+        "median": 1.026195
+      },
+      {
+        "date": "2022-06",
+        "mean": 1.045886,
+        "median": 1.037248
+      },
+      {
+        "date": "2022-07",
+        "mean": 1.045632,
+        "median": 1.036868
+      },
+      {
+        "date": "2022-08",
+        "mean": 1.036381,
+        "median": 1.025756
+      },
+      {
+        "date": "2022-09",
+        "mean": 1.020805,
+        "median": 1.012087
+      },
+      {
+        "date": "2022-10",
+        "mean": 1.009333,
+        "median": 1.002283
+      },
+      {
+        "date": "2022-11",
+        "mean": 1.003044,
+        "median": 1
+      },
+      {
+        "date": "2022-12",
+        "mean": 0.998542,
+        "median": 1
+      },
+      {
+        "date": "2023-01",
+        "mean": 0.995675,
+        "median": 1
+      },
+      {
+        "date": "2023-02",
+        "mean": 0.991387,
+        "median": 0.996825
+      },
+      {
+        "date": "2023-03",
+        "mean": 0.997588,
+        "median": 0.996825
+      },
+      {
+        "date": "2023-04",
+        "mean": 1.005526,
+        "median": 1.000679
+      },
+      {
+        "date": "2023-05",
+        "mean": 1.018313,
+        "median": 1.007941
+      },
+      {
+        "date": "2023-06",
+        "mean": 1.029344,
+        "median": 1.019128
+      },
+      {
+        "date": "2023-07",
+        "mean": 1.035924,
+        "median": 1.023459
+      },
+      {
+        "date": "2023-08",
+        "mean": 1.039199,
+        "median": 1.030259
+      },
+      {
+        "date": "2023-09",
+        "mean": 1.033673,
+        "median": 1.025245
+      },
+      {
+        "date": "2023-10",
+        "mean": 1.032247,
+        "median": 1.022858
+      },
+      {
+        "date": "2023-11",
+        "mean": 1.026472,
+        "median": 1.01316
+      },
+      {
+        "date": "2023-12",
+        "mean": 1.023363,
+        "median": 1.008926
+      },
+      {
+        "date": "2024-01",
+        "mean": 1.015047,
+        "median": 1.003129
+      },
+      {
+        "date": "2024-02",
+        "mean": 1.014361,
+        "median": 1.001963
+      },
+      {
+        "date": "2024-03",
+        "mean": 1.016778,
+        "median": 1.004234
+      },
+      {
+        "date": "2024-04",
+        "mean": 1.023273,
+        "median": 1.009247
+      },
+      {
+        "date": "2024-05",
+        "mean": 1.029417,
+        "median": 1.015283
+      },
+      {
+        "date": "2024-06",
+        "mean": 1.034765,
+        "median": 1.020843
+      },
+      {
+        "date": "2024-07",
+        "mean": 1.03785,
+        "median": 1.023462
+      },
+      {
+        "date": "2024-08",
+        "mean": 1.035647,
+        "median": 1.022163
+      },
+      {
+        "date": "2024-09",
+        "mean": 1.027167,
+        "median": 1.013255
+      },
+      {
+        "date": "2024-10",
+        "mean": 1.020446,
+        "median": 1.005733
+      },
+      {
+        "date": "2024-11",
+        "mean": 1.015562,
+        "median": 1.001332
+      },
+      {
+        "date": "2024-12",
+        "mean": 1.016146,
+        "median": 1.000954
+      },
+      {
+        "date": "2025-01",
+        "mean": 1.010761,
+        "median": 1.000843
+      },
+      {
+        "date": "2025-02",
+        "mean": 1.008606,
+        "median": 1.000482
+      },
+      {
+        "date": "2025-03",
+        "mean": 1.012373,
+        "median": 1.000742
+      },
+      {
+        "date": "2025-04",
+        "mean": 1.026267,
+        "median": 1.00776
+      },
+      {
+        "date": "2025-05",
+        "mean": 1.036737,
+        "median": 1.015195
+      },
+      {
+        "date": "2025-06",
+        "mean": 1.040899,
+        "median": 1.023642
+      },
+      {
+        "date": "2025-07",
+        "mean": 1.037442,
+        "median": 1.021527
+      },
+      {
+        "date": "2025-08",
+        "mean": 1.033275,
+        "median": 1.01803
+      },
+      {
+        "date": "2025-09",
+        "mean": 1.025919,
+        "median": 1.008891
+      },
+      {
+        "date": "2025-10",
+        "mean": 1.02162,
+        "median": 1.004063
+      },
+      {
+        "date": "2025-11",
+        "mean": 1.016326,
+        "median": 1.000125
+      },
+      {
+        "date": "2025-12",
+        "mean": 1.013341,
+        "median": 1.000074
+      },
+      {
+        "date": "2026-01",
+        "mean": 1.012952,
+        "median": 1.000067
+      },
+      {
+        "date": "2026-02",
+        "mean": 1.013824,
+        "median": 1.000067
+      },
+      {
+        "date": "2026-03",
+        "mean": 1.01813,
+        "median": 1.003537
+      },
+      {
+        "date": "2026-04",
+        "mean": 1.02101,
+        "median": 1.00623
+      },
+      {
+        "date": "2026-05",
+        "mean": 1.030207,
+        "median": 1.013993
+      },
+      {
+        "date": "2026-06",
+        "mean": 1.03844,
+        "median": 1.020162
+      }
+    ],
+    "ownership": [
+      {
+        "date": "2015-01",
+        "totalMonthlyPayment": 2451.88,
+        "incomeNeeded": 98075.05,
+        "zori": 1691.66,
+        "middleZhvi": 585700.15,
+        "mortgageRate": 3.67
+      },
+      {
+        "date": "2015-02",
+        "totalMonthlyPayment": 2460.51,
+        "incomeNeeded": 98420.37,
+        "zori": 1701.31,
+        "middleZhvi": 584731.13,
+        "mortgageRate": 3.71
+      },
+      {
+        "date": "2015-03",
+        "totalMonthlyPayment": 2477.18,
+        "incomeNeeded": 99087,
+        "zori": 1717.1,
+        "middleZhvi": 586533.16,
+        "mortgageRate": 3.77
+      },
+      {
+        "date": "2015-04",
+        "totalMonthlyPayment": 2465.52,
+        "incomeNeeded": 98620.95,
+        "zori": 1722.59,
+        "middleZhvi": 588162.01,
+        "mortgageRate": 3.672
+      },
+      {
+        "date": "2015-05",
+        "totalMonthlyPayment": 2501.78,
+        "incomeNeeded": 100071.18,
+        "zori": 1732.63,
+        "middleZhvi": 589049.92,
+        "mortgageRate": 3.84
+      },
+      {
+        "date": "2015-06",
+        "totalMonthlyPayment": 2527.48,
+        "incomeNeeded": 101099.34,
+        "zori": 1736.07,
+        "middleZhvi": 588233.85,
+        "mortgageRate": 3.982
+      },
+      {
+        "date": "2015-07",
+        "totalMonthlyPayment": 2540.33,
+        "incomeNeeded": 101613.24,
+        "zori": 1752.66,
+        "middleZhvi": 587969.6,
+        "mortgageRate": 4.046
+      },
+      {
+        "date": "2015-08",
+        "totalMonthlyPayment": 2518.67,
+        "incomeNeeded": 100746.79,
+        "zori": 1755.72,
+        "middleZhvi": 588742.63,
+        "mortgageRate": 3.905
+      },
+      {
+        "date": "2015-09",
+        "totalMonthlyPayment": 2522.97,
+        "incomeNeeded": 100918.92,
+        "zori": 1752.2,
+        "middleZhvi": 589974.52,
+        "mortgageRate": 3.89
+      },
+      {
+        "date": "2015-10",
+        "totalMonthlyPayment": 2514.79,
+        "incomeNeeded": 100591.58,
+        "zori": 1740.03,
+        "middleZhvi": 591380.06,
+        "mortgageRate": 3.796
+      },
+      {
+        "date": "2015-11",
+        "totalMonthlyPayment": 2550.09,
+        "incomeNeeded": 102003.6,
+        "zori": 1741.39,
+        "middleZhvi": 592395.97,
+        "mortgageRate": 3.942
+      },
+      {
+        "date": "2015-12",
+        "totalMonthlyPayment": 2559.68,
+        "incomeNeeded": 102387.04,
+        "zori": 1739.28,
+        "middleZhvi": 593240.2,
+        "mortgageRate": 3.964
+      },
+      {
+        "date": "2016-01",
+        "totalMonthlyPayment": 2543.41,
+        "incomeNeeded": 101736.41,
+        "zori": 1747.65,
+        "middleZhvi": 593510.48,
+        "mortgageRate": 3.873
+      },
+      {
+        "date": "2016-02",
+        "totalMonthlyPayment": 2502.18,
+        "incomeNeeded": 100087.26,
+        "zori": 1748.12,
+        "middleZhvi": 593942.22,
+        "mortgageRate": 3.66
+      },
+      {
+        "date": "2016-03",
+        "totalMonthlyPayment": 2509.02,
+        "incomeNeeded": 100360.8,
+        "zori": 1757.33,
+        "middleZhvi": 594021.46,
+        "mortgageRate": 3.694
+      },
+      {
+        "date": "2016-04",
+        "totalMonthlyPayment": 2493.68,
+        "incomeNeeded": 99747.11,
+        "zori": 1768.34,
+        "middleZhvi": 593779.09,
+        "mortgageRate": 3.605
+      },
+      {
+        "date": "2016-05",
+        "totalMonthlyPayment": 2494.12,
+        "incomeNeeded": 99764.88,
+        "zori": 1776.75,
+        "middleZhvi": 592791.32,
+        "mortgageRate": 3.6
+      },
+      {
+        "date": "2016-06",
+        "totalMonthlyPayment": 2484.8,
+        "incomeNeeded": 99392.19,
+        "zori": 1781.76,
+        "middleZhvi": 592023.07,
+        "mortgageRate": 3.568
+      },
+      {
+        "date": "2016-07",
+        "totalMonthlyPayment": 2458.27,
+        "incomeNeeded": 98330.83,
+        "zori": 1779.49,
+        "middleZhvi": 591505.14,
+        "mortgageRate": 3.44
+      },
+      {
+        "date": "2016-08",
+        "totalMonthlyPayment": 2453.18,
+        "incomeNeeded": 98127.07,
+        "zori": 1777.6,
+        "middleZhvi": 590531.82,
+        "mortgageRate": 3.435
+      },
+      {
+        "date": "2016-09",
+        "totalMonthlyPayment": 2456.76,
+        "incomeNeeded": 98270.36,
+        "zori": 1774.52,
+        "middleZhvi": 589099.26,
+        "mortgageRate": 3.46
+      },
+      {
+        "date": "2016-10",
+        "totalMonthlyPayment": 2458.76,
+        "incomeNeeded": 98350.35,
+        "zori": 1775.55,
+        "middleZhvi": 588608.45,
+        "mortgageRate": 3.47
+      },
+      {
+        "date": "2016-11",
+        "totalMonthlyPayment": 2520.57,
+        "incomeNeeded": 100822.84,
+        "zori": 1762.62,
+        "middleZhvi": 588609.02,
+        "mortgageRate": 3.77
+      },
+      {
+        "date": "2016-12",
+        "totalMonthlyPayment": 2615.47,
+        "incomeNeeded": 104618.9,
+        "zori": 1758.69,
+        "middleZhvi": 590449.16,
+        "mortgageRate": 4.198
+      },
+      {
+        "date": "2017-01",
+        "totalMonthlyPayment": 2600.02,
+        "incomeNeeded": 104000.8,
+        "zori": 1756.07,
+        "middleZhvi": 591259.24,
+        "mortgageRate": 4.15
+      },
+      {
+        "date": "2017-02",
+        "totalMonthlyPayment": 2610.45,
+        "incomeNeeded": 104418.08,
+        "zori": 1777.98,
+        "middleZhvi": 592077.72,
+        "mortgageRate": 4.168
+      },
+      {
+        "date": "2017-03",
+        "totalMonthlyPayment": 2621.57,
+        "incomeNeeded": 104862.77,
+        "zori": 1790.92,
+        "middleZhvi": 592906.81,
+        "mortgageRate": 4.196
+      },
+      {
+        "date": "2017-04",
+        "totalMonthlyPayment": 2600.81,
+        "incomeNeeded": 104032.22,
+        "zori": 1812.91,
+        "middleZhvi": 595611.67,
+        "mortgageRate": 4.045
+      },
+      {
+        "date": "2017-05",
+        "totalMonthlyPayment": 2602.76,
+        "incomeNeeded": 104110.6,
+        "zori": 1832.53,
+        "middleZhvi": 597925.02,
+        "mortgageRate": 4.01
+      },
+      {
+        "date": "2017-06",
+        "totalMonthlyPayment": 2586.14,
+        "incomeNeeded": 103445.66,
+        "zori": 1842.99,
+        "middleZhvi": 597975.14,
+        "mortgageRate": 3.904
+      },
+      {
+        "date": "2017-07",
+        "totalMonthlyPayment": 2598.06,
+        "incomeNeeded": 103922.23,
+        "zori": 1838.89,
+        "middleZhvi": 596486.14,
+        "mortgageRate": 3.967
+      },
+      {
+        "date": "2017-08",
+        "totalMonthlyPayment": 2576.17,
+        "incomeNeeded": 103046.66,
+        "zori": 1829.72,
+        "middleZhvi": 594863.77,
+        "mortgageRate": 3.88
+      },
+      {
+        "date": "2017-09",
+        "totalMonthlyPayment": 2559.15,
+        "incomeNeeded": 102366.14,
+        "zori": 1821.87,
+        "middleZhvi": 593801.08,
+        "mortgageRate": 3.805
+      },
+      {
+        "date": "2017-10",
+        "totalMonthlyPayment": 2576.47,
+        "incomeNeeded": 103058.72,
+        "zori": 1823.25,
+        "middleZhvi": 592644.66,
+        "mortgageRate": 3.895
+      },
+      {
+        "date": "2017-11",
+        "totalMonthlyPayment": 2587.37,
+        "incomeNeeded": 103494.95,
+        "zori": 1818.64,
+        "middleZhvi": 592313.42,
+        "mortgageRate": 3.922
+      },
+      {
+        "date": "2017-12",
+        "totalMonthlyPayment": 2597.62,
+        "incomeNeeded": 103904.85,
+        "zori": 1829.8,
+        "middleZhvi": 592436.55,
+        "mortgageRate": 3.95
+      },
+      {
+        "date": "2018-01",
+        "totalMonthlyPayment": 2628.16,
+        "incomeNeeded": 105126.54,
+        "zori": 1830.48,
+        "middleZhvi": 592353.91,
+        "mortgageRate": 4.033
+      },
+      {
+        "date": "2018-02",
+        "totalMonthlyPayment": 2687.41,
+        "incomeNeeded": 107496.53,
+        "zori": 1856.92,
+        "middleZhvi": 591834.97,
+        "mortgageRate": 4.33
+      },
+      {
+        "date": "2018-03",
+        "totalMonthlyPayment": 2713.2,
+        "incomeNeeded": 108528,
+        "zori": 1866.28,
+        "middleZhvi": 591659.72,
+        "mortgageRate": 4.444
+      },
+      {
+        "date": "2018-04",
+        "totalMonthlyPayment": 2721.77,
+        "incomeNeeded": 108870.96,
+        "zori": 1879.77,
+        "middleZhvi": 592035.7,
+        "mortgageRate": 4.467
+      },
+      {
+        "date": "2018-05",
+        "totalMonthlyPayment": 2751.58,
+        "incomeNeeded": 110063.31,
+        "zori": 1882.7,
+        "middleZhvi": 592496.33,
+        "mortgageRate": 4.586
+      },
+      {
+        "date": "2018-06",
+        "totalMonthlyPayment": 2749.05,
+        "incomeNeeded": 109961.94,
+        "zori": 1897.72,
+        "middleZhvi": 591884.06,
+        "mortgageRate": 4.57
+      },
+      {
+        "date": "2018-07",
+        "totalMonthlyPayment": 2738.21,
+        "incomeNeeded": 109528.44,
+        "zori": 1900.35,
+        "middleZhvi": 590459.1,
+        "mortgageRate": 4.527
+      },
+      {
+        "date": "2018-08",
+        "totalMonthlyPayment": 2740.04,
+        "incomeNeeded": 109601.61,
+        "zori": 1896.67,
+        "middleZhvi": 589549.1,
+        "mortgageRate": 4.55
+      },
+      {
+        "date": "2018-09",
+        "totalMonthlyPayment": 2755.05,
+        "incomeNeeded": 110201.99,
+        "zori": 1899.21,
+        "middleZhvi": 589109.2,
+        "mortgageRate": 4.628
+      },
+      {
+        "date": "2018-10",
+        "totalMonthlyPayment": 2798.31,
+        "incomeNeeded": 111932.34,
+        "zori": 1898.11,
+        "middleZhvi": 588896.01,
+        "mortgageRate": 4.83
+      },
+      {
+        "date": "2018-11",
+        "totalMonthlyPayment": 2807.89,
+        "incomeNeeded": 112315.65,
+        "zori": 1906.08,
+        "middleZhvi": 588337.41,
+        "mortgageRate": 4.866
+      },
+      {
+        "date": "2018-12",
+        "totalMonthlyPayment": 2759.36,
+        "incomeNeeded": 110374.34,
+        "zori": 1905.03,
+        "middleZhvi": 587740.69,
+        "mortgageRate": 4.638
+      },
+      {
+        "date": "2019-01",
+        "totalMonthlyPayment": 2710.88,
+        "incomeNeeded": 108435.33,
+        "zori": 1912.95,
+        "middleZhvi": 586238.41,
+        "mortgageRate": 4.464
+      },
+      {
+        "date": "2019-02",
+        "totalMonthlyPayment": 2688.56,
+        "incomeNeeded": 107542.49,
+        "zori": 1914.71,
+        "middleZhvi": 584872.69,
+        "mortgageRate": 4.37
+      },
+      {
+        "date": "2019-03",
+        "totalMonthlyPayment": 2667.91,
+        "incomeNeeded": 106716.38,
+        "zori": 1923.83,
+        "middleZhvi": 583846.97,
+        "mortgageRate": 4.265
+      },
+      {
+        "date": "2019-04",
+        "totalMonthlyPayment": 2646.49,
+        "incomeNeeded": 105859.52,
+        "zori": 1938.27,
+        "middleZhvi": 584118.91,
+        "mortgageRate": 4.143
+      },
+      {
+        "date": "2019-05",
+        "totalMonthlyPayment": 2633.17,
+        "incomeNeeded": 105326.79,
+        "zori": 1947.6,
+        "middleZhvi": 583337.04,
+        "mortgageRate": 4.072
+      },
+      {
+        "date": "2019-06",
+        "totalMonthlyPayment": 2577.96,
+        "incomeNeeded": 103118.37,
+        "zori": 1956.62,
+        "middleZhvi": 582053.08,
+        "mortgageRate": 3.803
+      },
+      {
+        "date": "2019-07",
+        "totalMonthlyPayment": 2566.72,
+        "incomeNeeded": 102668.83,
+        "zori": 1957.96,
+        "middleZhvi": 580888.67,
+        "mortgageRate": 3.765
+      },
+      {
+        "date": "2019-08",
+        "totalMonthlyPayment": 2535.09,
+        "incomeNeeded": 101403.5,
+        "zori": 1955.71,
+        "middleZhvi": 580566.87,
+        "mortgageRate": 3.616
+      },
+      {
+        "date": "2019-09",
+        "totalMonthlyPayment": 2529.62,
+        "incomeNeeded": 101184.76,
+        "zori": 1955.87,
+        "middleZhvi": 579470.18,
+        "mortgageRate": 3.605
+      },
+      {
+        "date": "2019-10",
+        "totalMonthlyPayment": 2543.98,
+        "incomeNeeded": 101759.07,
+        "zori": 1960.21,
+        "middleZhvi": 578040.66,
+        "mortgageRate": 3.688
+      },
+      {
+        "date": "2019-11",
+        "totalMonthlyPayment": 2546.37,
+        "incomeNeeded": 101854.67,
+        "zori": 1957.22,
+        "middleZhvi": 576759.69,
+        "mortgageRate": 3.695
+      },
+      {
+        "date": "2019-12",
+        "totalMonthlyPayment": 2555.33,
+        "incomeNeeded": 102213.05,
+        "zori": 1956.95,
+        "middleZhvi": 577050.06,
+        "mortgageRate": 3.72
+      },
+      {
+        "date": "2020-01",
+        "totalMonthlyPayment": 2524.3,
+        "incomeNeeded": 100972.09,
+        "zori": 1962.47,
+        "middleZhvi": 578126.83,
+        "mortgageRate": 3.624
+      },
+      {
+        "date": "2020-02",
+        "totalMonthlyPayment": 2504.07,
+        "incomeNeeded": 100162.92,
+        "zori": 1983.5,
+        "middleZhvi": 579339.91,
+        "mortgageRate": 3.465
+      },
+      {
+        "date": "2020-03",
+        "totalMonthlyPayment": 2514.95,
+        "incomeNeeded": 100597.86,
+        "zori": 1992.33,
+        "middleZhvi": 580572.45,
+        "mortgageRate": 3.45
+      },
+      {
+        "date": "2020-04",
+        "totalMonthlyPayment": 2497.83,
+        "incomeNeeded": 99913.06,
+        "zori": 2004.95,
+        "middleZhvi": 581177.47,
+        "mortgageRate": 3.306
+      },
+      {
+        "date": "2020-05",
+        "totalMonthlyPayment": 2485.1,
+        "incomeNeeded": 99403.93,
+        "zori": 2016.66,
+        "middleZhvi": 580098.04,
+        "mortgageRate": 3.232
+      },
+      {
+        "date": "2020-06",
+        "totalMonthlyPayment": 2466.18,
+        "incomeNeeded": 98647.04,
+        "zori": 2034.49,
+        "middleZhvi": 577302.86,
+        "mortgageRate": 3.162
+      },
+      {
+        "date": "2020-07",
+        "totalMonthlyPayment": 2432.77,
+        "incomeNeeded": 97310.73,
+        "zori": 2046.16,
+        "middleZhvi": 574978.54,
+        "mortgageRate": 3.016
+      },
+      {
+        "date": "2020-08",
+        "totalMonthlyPayment": 2425.33,
+        "incomeNeeded": 97013.36,
+        "zori": 2058.08,
+        "middleZhvi": 576162.01,
+        "mortgageRate": 2.935
+      },
+      {
+        "date": "2020-09",
+        "totalMonthlyPayment": 2440.72,
+        "incomeNeeded": 97628.98,
+        "zori": 2068.13,
+        "middleZhvi": 582002.57,
+        "mortgageRate": 2.89
+      },
+      {
+        "date": "2020-10",
+        "totalMonthlyPayment": 2468.47,
+        "incomeNeeded": 98738.93,
+        "zori": 2081.47,
+        "middleZhvi": 591621.27,
+        "mortgageRate": 2.834
+      },
+      {
+        "date": "2020-11",
+        "totalMonthlyPayment": 2501.07,
+        "incomeNeeded": 100042.96,
+        "zori": 2091.17,
+        "middleZhvi": 603998.35,
+        "mortgageRate": 2.765
+      },
+      {
+        "date": "2020-12",
+        "totalMonthlyPayment": 2533.12,
+        "incomeNeeded": 101324.82,
+        "zori": 2093.13,
+        "middleZhvi": 618243.99,
+        "mortgageRate": 2.684
+      },
+      {
+        "date": "2021-01",
+        "totalMonthlyPayment": 2519.62,
+        "incomeNeeded": 100784.87,
+        "zori": 2097.45,
+        "middleZhvi": 632171.8,
+        "mortgageRate": 2.735
+      },
+      {
+        "date": "2021-02",
+        "totalMonthlyPayment": 2575.46,
+        "incomeNeeded": 103018.59,
+        "zori": 2103.16,
+        "middleZhvi": 645799.18,
+        "mortgageRate": 2.81
+      },
+      {
+        "date": "2021-03",
+        "totalMonthlyPayment": 2669.75,
+        "incomeNeeded": 106789.92,
+        "zori": 2127.97,
+        "middleZhvi": 657868.33,
+        "mortgageRate": 3.083
+      },
+      {
+        "date": "2021-04",
+        "totalMonthlyPayment": 2702.9,
+        "incomeNeeded": 108115.93,
+        "zori": 2159.61,
+        "middleZhvi": 670518.78,
+        "mortgageRate": 3.06
+      },
+      {
+        "date": "2021-05",
+        "totalMonthlyPayment": 2720.34,
+        "incomeNeeded": 108813.59,
+        "zori": 2201.25,
+        "middleZhvi": 683242.08,
+        "mortgageRate": 2.963
+      },
+      {
+        "date": "2021-06",
+        "totalMonthlyPayment": 2760.95,
+        "incomeNeeded": 110437.98,
+        "zori": 2234.33,
+        "middleZhvi": 696336.2,
+        "mortgageRate": 2.975
+      },
+      {
+        "date": "2021-07",
+        "totalMonthlyPayment": 2762.64,
+        "incomeNeeded": 110505.52,
+        "zori": 2261.92,
+        "middleZhvi": 705699.24,
+        "mortgageRate": 2.868
+      },
+      {
+        "date": "2021-08",
+        "totalMonthlyPayment": 2765.32,
+        "incomeNeeded": 110612.67,
+        "zori": 2275.73,
+        "middleZhvi": 709615.17,
+        "mortgageRate": 2.843
+      },
+      {
+        "date": "2021-09",
+        "totalMonthlyPayment": 2772.6,
+        "incomeNeeded": 110904.11,
+        "zori": 2288.64,
+        "middleZhvi": 709114.4,
+        "mortgageRate": 2.9
+      },
+      {
+        "date": "2021-10",
+        "totalMonthlyPayment": 2805.95,
+        "incomeNeeded": 112238.02,
+        "zori": 2285.86,
+        "middleZhvi": 707634.53,
+        "mortgageRate": 3.067
+      },
+      {
+        "date": "2021-11",
+        "totalMonthlyPayment": 2810.96,
+        "incomeNeeded": 112438.24,
+        "zori": 2284.49,
+        "middleZhvi": 708419.65,
+        "mortgageRate": 3.067
+      },
+      {
+        "date": "2021-12",
+        "totalMonthlyPayment": 2832.79,
+        "incomeNeeded": 113311.79,
+        "zori": 2287.02,
+        "middleZhvi": 712279.51,
+        "mortgageRate": 3.098
+      },
+      {
+        "date": "2022-01",
+        "totalMonthlyPayment": 2888.81,
+        "incomeNeeded": 115552.26,
+        "zori": 2305.26,
+        "middleZhvi": 718957.81,
+        "mortgageRate": 3.445
+      },
+      {
+        "date": "2022-02",
+        "totalMonthlyPayment": 3005.12,
+        "incomeNeeded": 120204.83,
+        "zori": 2329.58,
+        "middleZhvi": 727532.66,
+        "mortgageRate": 3.763
+      },
+      {
+        "date": "2022-03",
+        "totalMonthlyPayment": 3156.99,
+        "incomeNeeded": 126279.41,
+        "zori": 2358.56,
+        "middleZhvi": 737625.27,
+        "mortgageRate": 4.172
+      },
+      {
+        "date": "2022-04",
+        "totalMonthlyPayment": 3419.18,
+        "incomeNeeded": 136767.06,
+        "zori": 2394.13,
+        "middleZhvi": 750024.56,
+        "mortgageRate": 4.982
+      },
+      {
+        "date": "2022-05",
+        "totalMonthlyPayment": 3538.55,
+        "incomeNeeded": 141541.87,
+        "zori": 2437.38,
+        "middleZhvi": 763186.22,
+        "mortgageRate": 5.23
+      },
+      {
+        "date": "2022-06",
+        "totalMonthlyPayment": 3665.47,
+        "incomeNeeded": 146618.77,
+        "zori": 2476.7,
+        "middleZhvi": 775562.76,
+        "mortgageRate": 5.522
+      },
+      {
+        "date": "2022-07",
+        "totalMonthlyPayment": 3663.29,
+        "incomeNeeded": 146531.7,
+        "zori": 2498.3,
+        "middleZhvi": 783307.2,
+        "mortgageRate": 5.412
+      },
+      {
+        "date": "2022-08",
+        "totalMonthlyPayment": 3615.17,
+        "incomeNeeded": 144606.78,
+        "zori": 2503.38,
+        "middleZhvi": 785517.17,
+        "mortgageRate": 5.223
+      },
+      {
+        "date": "2022-09",
+        "totalMonthlyPayment": 3860.01,
+        "incomeNeeded": 154400.42,
+        "zori": 2493.84,
+        "middleZhvi": 783183.85,
+        "mortgageRate": 6.112
+      },
+      {
+        "date": "2022-10",
+        "totalMonthlyPayment": 4083.17,
+        "incomeNeeded": 163326.73,
+        "zori": 2484.97,
+        "middleZhvi": 780221.34,
+        "mortgageRate": 6.9
+      },
+      {
+        "date": "2022-11",
+        "totalMonthlyPayment": 4049.66,
+        "incomeNeeded": 161986.28,
+        "zori": 2470.75,
+        "middleZhvi": 779544,
+        "mortgageRate": 6.805
+      },
+      {
+        "date": "2022-12",
+        "totalMonthlyPayment": 3918.3,
+        "incomeNeeded": 156731.94,
+        "zori": 2458.77,
+        "middleZhvi": 780237.27,
+        "mortgageRate": 6.364
+      },
+      {
+        "date": "2023-01",
+        "totalMonthlyPayment": 3895.47,
+        "incomeNeeded": 155818.88,
+        "zori": 2459.35,
+        "middleZhvi": 782023.97,
+        "mortgageRate": 6.272
+      },
+      {
+        "date": "2023-02",
+        "totalMonthlyPayment": 3892.91,
+        "incomeNeeded": 155716.36,
+        "zori": 2465.68,
+        "middleZhvi": 784943.75,
+        "mortgageRate": 6.258
+      },
+      {
+        "date": "2023-03",
+        "totalMonthlyPayment": 3986.81,
+        "incomeNeeded": 159472.56,
+        "zori": 2503.97,
+        "middleZhvi": 788297.47,
+        "mortgageRate": 6.544
+      },
+      {
+        "date": "2023-04",
+        "totalMonthlyPayment": 3953.57,
+        "incomeNeeded": 158142.9,
+        "zori": 2521.88,
+        "middleZhvi": 794283.23,
+        "mortgageRate": 6.343
+      },
+      {
+        "date": "2023-05",
+        "totalMonthlyPayment": 4010.7,
+        "incomeNeeded": 160427.89,
+        "zori": 2548.92,
+        "middleZhvi": 801560.27,
+        "mortgageRate": 6.425
+      },
+      {
+        "date": "2023-06",
+        "totalMonthlyPayment": 4141.09,
+        "incomeNeeded": 165643.66,
+        "zori": 2561.51,
+        "middleZhvi": 810491.32,
+        "mortgageRate": 6.714
+      },
+      {
+        "date": "2023-07",
+        "totalMonthlyPayment": 4228.97,
+        "incomeNeeded": 169158.94,
+        "zori": 2581.01,
+        "middleZhvi": 820490.93,
+        "mortgageRate": 6.84
+      },
+      {
+        "date": "2023-08",
+        "totalMonthlyPayment": 4359.23,
+        "incomeNeeded": 174369.07,
+        "zori": 2588.18,
+        "middleZhvi": 832526.11,
+        "mortgageRate": 7.072
+      },
+      {
+        "date": "2023-09",
+        "totalMonthlyPayment": 4457.48,
+        "incomeNeeded": 178299.21,
+        "zori": 2577.91,
+        "middleZhvi": 847593.43,
+        "mortgageRate": 7.2
+      },
+      {
+        "date": "2023-10",
+        "totalMonthlyPayment": 4645.19,
+        "incomeNeeded": 185807.6,
+        "zori": 2572.25,
+        "middleZhvi": 861542.5,
+        "mortgageRate": 7.62
+      },
+      {
+        "date": "2023-11",
+        "totalMonthlyPayment": 4627.18,
+        "incomeNeeded": 185087.18,
+        "zori": 2574.56,
+        "middleZhvi": 873869.14,
+        "mortgageRate": 7.442
+      },
+      {
+        "date": "2023-12",
+        "totalMonthlyPayment": 4447.82,
+        "incomeNeeded": 177912.73,
+        "zori": 2579.66,
+        "middleZhvi": 883232.68,
+        "mortgageRate": 6.815
+      },
+      {
+        "date": "2024-01",
+        "totalMonthlyPayment": 4381.3,
+        "incomeNeeded": 175252.18,
+        "zori": 2585.43,
+        "middleZhvi": 891723.28,
+        "mortgageRate": 6.643
+      },
+      {
+        "date": "2024-02",
+        "totalMonthlyPayment": 4451.18,
+        "incomeNeeded": 178047.19,
+        "zori": 2602.36,
+        "middleZhvi": 899703.22,
+        "mortgageRate": 6.776
+      },
+      {
+        "date": "2024-03",
+        "totalMonthlyPayment": 4505.82,
+        "incomeNeeded": 180232.91,
+        "zori": 2620.93,
+        "middleZhvi": 909880.13,
+        "mortgageRate": 6.82
+      },
+      {
+        "date": "2024-04",
+        "totalMonthlyPayment": 4607.47,
+        "incomeNeeded": 184298.93,
+        "zori": 2647.37,
+        "middleZhvi": 920568.32,
+        "mortgageRate": 6.992
+      },
+      {
+        "date": "2024-05",
+        "totalMonthlyPayment": 4663.47,
+        "incomeNeeded": 186538.67,
+        "zori": 2665.21,
+        "middleZhvi": 929816.05,
+        "mortgageRate": 7.06
+      },
+      {
+        "date": "2024-06",
+        "totalMonthlyPayment": 4627.63,
+        "incomeNeeded": 185105.38,
+        "zori": 2688.9,
+        "middleZhvi": 934289.53,
+        "mortgageRate": 6.918
+      },
+      {
+        "date": "2024-07",
+        "totalMonthlyPayment": 4611.25,
+        "incomeNeeded": 184449.99,
+        "zori": 2715.67,
+        "middleZhvi": 935516.45,
+        "mortgageRate": 6.848
+      },
+      {
+        "date": "2024-08",
+        "totalMonthlyPayment": 4503.08,
+        "incomeNeeded": 180123.05,
+        "zori": 2734.23,
+        "middleZhvi": 935540.3,
+        "mortgageRate": 6.5
+      },
+      {
+        "date": "2024-09",
+        "totalMonthlyPayment": 4410.29,
+        "incomeNeeded": 176411.42,
+        "zori": 2734.41,
+        "middleZhvi": 935995.02,
+        "mortgageRate": 6.18
+      },
+      {
+        "date": "2024-10",
+        "totalMonthlyPayment": 4507.66,
+        "incomeNeeded": 180306.58,
+        "zori": 2719.45,
+        "middleZhvi": 936477.56,
+        "mortgageRate": 6.428
+      },
+      {
+        "date": "2024-11",
+        "totalMonthlyPayment": 4642.87,
+        "incomeNeeded": 185714.96,
+        "zori": 2720.65,
+        "middleZhvi": 934689.76,
+        "mortgageRate": 6.805
+      },
+      {
+        "date": "2024-12",
+        "totalMonthlyPayment": 4614.81,
+        "incomeNeeded": 184592.38,
+        "zori": 2735.75,
+        "middleZhvi": 931356.54,
+        "mortgageRate": 6.715
+      },
+      {
+        "date": "2025-01",
+        "totalMonthlyPayment": 4681.1,
+        "incomeNeeded": 187244.05,
+        "zori": 2764.42,
+        "middleZhvi": 928449.22,
+        "mortgageRate": 6.958
+      },
+      {
+        "date": "2025-02",
+        "totalMonthlyPayment": 4650.13,
+        "incomeNeeded": 186005.05,
+        "zori": 2777.96,
+        "middleZhvi": 927712.2,
+        "mortgageRate": 6.842
+      },
+      {
+        "date": "2025-03",
+        "totalMonthlyPayment": 4595.56,
+        "incomeNeeded": 183822.43,
+        "zori": 2791.16,
+        "middleZhvi": 929736.4,
+        "mortgageRate": 6.65
+      },
+      {
+        "date": "2025-04",
+        "totalMonthlyPayment": 4635.76,
+        "incomeNeeded": 185430.24,
+        "zori": 2796.6,
+        "middleZhvi": 933949.16,
+        "mortgageRate": 6.725
+      },
+      {
+        "date": "2025-05",
+        "totalMonthlyPayment": 4681.64,
+        "incomeNeeded": 187265.53,
+        "zori": 2808.35,
+        "middleZhvi": 939280.29,
+        "mortgageRate": 6.816
+      },
+      {
+        "date": "2025-06",
+        "totalMonthlyPayment": 4697.35,
+        "incomeNeeded": 187894.07,
+        "zori": 2815.08,
+        "middleZhvi": 944910.29,
+        "mortgageRate": 6.817
+      },
+      {
+        "date": "2025-07",
+        "totalMonthlyPayment": 4680.35,
+        "incomeNeeded": 187213.8,
+        "zori": 2822.84,
+        "middleZhvi": 950663.44,
+        "mortgageRate": 6.72
+      },
+      {
+        "date": "2025-08",
+        "totalMonthlyPayment": 4649.35,
+        "incomeNeeded": 185974.08,
+        "zori": 2826.91,
+        "middleZhvi": 954887.86,
+        "mortgageRate": 6.587
+      },
+      {
+        "date": "2025-09",
+        "totalMonthlyPayment": 4594.07,
+        "incomeNeeded": 183762.72,
+        "zori": 2832.85,
+        "middleZhvi": 958764.86,
+        "mortgageRate": 6.353
+      },
+      {
+        "date": "2025-10",
+        "totalMonthlyPayment": 4576.49,
+        "incomeNeeded": 183059.56,
+        "zori": 2840.26,
+        "middleZhvi": 963379.46,
+        "mortgageRate": 6.254
+      },
+      {
+        "date": "2025-11",
+        "totalMonthlyPayment": 4589.74,
+        "incomeNeeded": 183589.52,
+        "zori": 2827.84,
+        "middleZhvi": 970083.88,
+        "mortgageRate": 6.237
+      },
+      {
+        "date": "2025-12",
+        "totalMonthlyPayment": 4596.9,
+        "incomeNeeded": 183876.11,
+        "zori": 2824.59,
+        "middleZhvi": 977105.27,
+        "mortgageRate": 6.19
+      },
+      {
+        "date": "2026-01",
+        "totalMonthlyPayment": 4590.14,
+        "incomeNeeded": 183605.69,
+        "zori": 2822.01,
+        "middleZhvi": 983723.95,
+        "mortgageRate": 6.102
+      },
+      {
+        "date": "2026-02",
+        "totalMonthlyPayment": 4595.96,
+        "incomeNeeded": 183838.31,
+        "zori": 2833.9,
+        "middleZhvi": 989864.22,
+        "mortgageRate": 6.048
+      },
+      {
+        "date": "2026-03",
+        "totalMonthlyPayment": 4667.14,
+        "incomeNeeded": 186685.42,
+        "zori": 2845.62,
+        "middleZhvi": 996747.17,
+        "mortgageRate": 6.177
+      },
+      {
+        "date": "2026-04",
+        "totalMonthlyPayment": 4742.76,
+        "incomeNeeded": 189710.28,
+        "zori": 2854.14,
+        "middleZhvi": 1001939.2,
+        "mortgageRate": 6.332
+      },
+      {
+        "date": "2026-05",
+        "totalMonthlyPayment": 4802.19,
+        "incomeNeeded": 192087.51,
+        "zori": 2870.55,
+        "middleZhvi": 1007595.65,
+        "mortgageRate": 6.443
+      },
+      {
+        "date": "2026-06",
+        "totalMonthlyPayment": 4838.66,
+        "incomeNeeded": 193546.47,
+        "zori": 2886.24,
+        "middleZhvi": 1013891.64,
+        "mortgageRate": 6.49
+      },
+      {
+        "date": "2026-07",
+        "totalMonthlyPayment": 4881.17,
+        "incomeNeeded": 195246.69,
+        "zori": 2896.77,
+        "middleZhvi": 1021074.38,
+        "mortgageRate": 6.542
+      }
+    ]
+  },
+  "forecast": {
+    "baseDate": "2026-07-31",
+    "observations": [
+      {
+        "date": "2026-08",
+        "growthPct": 0.5
+      },
+      {
+        "date": "2026-10",
+        "growthPct": 1
+      },
+      {
+        "date": "2027-07",
+        "growthPct": 3.6
+      }
+    ]
+  }
+}

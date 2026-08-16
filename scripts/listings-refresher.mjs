@@ -5,17 +5,28 @@ const ACTOR_URL = "https://api.apify.com/v2/acts/maxcopell~zillow-scraper/run-sy
 const DATA_PATH = process.env.DATA_PATH || "/data/listings.json";
 const REFRESH_INTERVAL_MS = Number(process.env.REFRESH_INTERVAL_MS || 48 * 60 * 60 * 1000);
 const APIFY_TOKEN = process.env.APIFY_TOKEN;
+const CITY = process.env.MARKET_CITY || "Brookfield";
+const STATE = process.env.MARKET_STATE || "CT";
+const REGION_ID = Number(process.env.ZILLOW_REGION_ID || 23843);
+const ZILLOW_PATH = process.env.ZILLOW_PATH || "brookfield-ct";
+const MAP_BOUNDS = {
+  west: Number(process.env.MAP_WEST || -73.515),
+  east: Number(process.env.MAP_EAST || -73.295),
+  south: Number(process.env.MAP_SOUTH || 41.405),
+  north: Number(process.env.MAP_NORTH || 41.565),
+};
 const ALLOWED_HOME_TYPES = new Set(["SINGLE_FAMILY", "CONDO", "TOWNHOUSE", "MANUFACTURED", "MULTI_FAMILY"]);
 
 if (!APIFY_TOKEN) throw new Error("APIFY_TOKEN is required");
+if (!CITY || !STATE || !Number.isInteger(REGION_ID) || REGION_ID <= 0 || !Object.values(MAP_BOUNDS).every(Number.isFinite)) throw new Error("Market listing configuration is invalid");
 
 function searchUrl() {
   const state = {
     pagination: {},
     isMapVisible: true,
-    mapBounds: { west: -73.515, east: -73.295, south: 41.405, north: 41.565 },
-    regionSelection: [{ regionId: 23843, regionType: 6 }],
-    usersSearchTerm: "Brookfield, CT",
+    mapBounds: MAP_BOUNDS,
+    regionSelection: [{ regionId: REGION_ID, regionType: 6 }],
+    usersSearchTerm: `${CITY}, ${STATE}`,
     filterState: {
       sort: { value: "days" },
       price: { max: 500000 },
@@ -23,7 +34,7 @@ function searchUrl() {
     },
     isListVisible: true,
   };
-  return `https://www.zillow.com/brookfield-ct/?searchQueryState=${encodeURIComponent(JSON.stringify(state))}`;
+  return `https://www.zillow.com/${ZILLOW_PATH}/?searchQueryState=${encodeURIComponent(JSON.stringify(state))}`;
 }
 
 function normalize(raw) {
@@ -39,7 +50,7 @@ function normalize(raw) {
   const image = raw.mainImage ?? raw.imgSrc ?? raw.listingPhotos?.[0]?.url;
   const daysOnZillow = Number(raw.daysOnZillow ?? home.daysOnZillow);
 
-  if (city?.toLowerCase() !== "brookfield" || state !== "CT") return null;
+  if (city?.toLowerCase() !== CITY.toLowerCase() || state !== STATE) return null;
   if (!Number.isFinite(price) || price > 500000 || price <= 0) return null;
   if (!status.includes("sale") || !ALLOWED_HOME_TYPES.has(homeType)) return null;
   if (!propertyUrl || !fullAddress) return null;
@@ -86,13 +97,13 @@ async function refresh() {
     if (listing) byId.set(listing.id, listing);
   }
   const listings = [...byId.values()].sort((a, b) => b.price - a.price);
-  if (!listings.length) throw new Error("No validated Brookfield listings returned; preserving last good snapshot");
+  if (!listings.length) throw new Error(`No validated ${CITY} listings returned; preserving last good snapshot`);
 
   const payload = {
     status: "ready",
     fetchedAt: new Date().toISOString(),
-    filter: { city: "Brookfield", state: "CT", maximumPrice: 500000, status: "for sale" },
-    source: { name: "Zillow via Apify", url: "https://www.zillow.com/brookfield-ct/" },
+    filter: { city: CITY, state: STATE, maximumPrice: 500000, status: "for sale" },
+    source: { name: "Zillow via Apify", url: `https://www.zillow.com/${ZILLOW_PATH}/` },
     listings,
   };
   await mkdir(dirname(DATA_PATH), { recursive: true });

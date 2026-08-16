@@ -148,10 +148,13 @@ export type BuyWaitScore = {
   leverageScore: number;
   budgetScore: number;
   affordabilityScore: number;
+  offerDate: string;
+  budgetDate: string;
+  affordabilityDate: string;
   score: number;
 };
 
-export function scoreBuyNowWait(data: MarketData): BuyWaitScore {
+function scoreBuyNowWaitSnapshot(data: MarketData): BuyWaitScore {
   const forecastGrowth = data.forecast.observations.at(-1)!.growthPct;
   const forecastScore = clamp(((forecastGrowth + 5) / 10) * 100);
   const offer = scoreOfferLeverage(data).at(-1)!;
@@ -165,8 +168,34 @@ export function scoreBuyNowWait(data: MarketData): BuyWaitScore {
     leverageScore: offer.score,
     budgetScore: budget.score,
     affordabilityScore,
+    offerDate: offer.date,
+    budgetDate: budget.date,
+    affordabilityDate: stress.date,
     score: 0.3 * forecastScore + 0.25 * offer.score + 0.2 * budget.score + 0.25 * affordabilityScore,
   };
+}
+
+export function scoreBuyNowWait(data: MarketData): BuyWaitScore {
+  return scoreBuyNowWaitSnapshot(data);
+}
+
+export function scoreBuyNowWaitHistory(data: MarketData): BuyWaitScore[] {
+  const byBaseDate = new Map(data.forecastHistory.map((vintage) => [vintage.baseDate, vintage]));
+  return [...byBaseDate.values()].sort((left, right) => left.baseDate.localeCompare(right.baseDate)).map((forecast) => {
+    const cutoff = forecast.baseDate.slice(0, 7);
+    const scoped = {
+      ...data,
+      series: {
+        market: data.series.market.filter((point) => point.date <= cutoff),
+        priceCuts: data.series.priceCuts.filter((point) => point.date <= cutoff),
+        homeValues: data.series.homeValues.filter((point) => point.date <= cutoff),
+        saleToList: data.series.saleToList.filter((point) => point.date <= cutoff),
+        ownership: data.series.ownership.filter((point) => point.date <= cutoff),
+      },
+      forecast,
+    };
+    return scoreBuyNowWaitSnapshot(scoped);
+  });
 }
 
 export function scoreBand(score: number, low: string, middle: string, high: string) {
