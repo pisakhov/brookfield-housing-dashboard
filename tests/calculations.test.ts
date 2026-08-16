@@ -88,12 +88,12 @@ test("current published raw observations and scores match independently reviewed
   const rent = scoreBuyRentHurdle(marketData);
   const wait = scoreBuyNowWait(marketData);
 
-  assert.deepEqual(marketData.series.market.at(-1), { date: "2026-06", inventory: 59, newListings: 30, countyDaysPending: 11, mortgageRate: 6.49 });
-  assert.deepEqual(marketData.series.homeValues.at(-1), { date: "2026-06", middle: 591916.53, bottom: 410500.69 });
-  assert.deepEqual(marketData.series.ownership.at(-1), { date: "2026-06", totalMonthlyPayment: 4875.68, incomeNeeded: 195027.18, zori: 2869.96, middleZhvi: 591916.53, mortgageRate: 6.49 });
-  assert.equal(marketData.forecast.observations.at(-1)!.growthPct, 2.4);
+  assert.deepEqual(marketData.series.market.at(-1), { date: "2026-07", inventory: 68, newListings: 30, countyDaysPending: 13, mortgageRate: 6.542 });
+  assert.deepEqual(marketData.series.homeValues.at(-1), { date: "2026-07", middle: 592687.87, bottom: 410282.48 });
+  assert.deepEqual(marketData.series.ownership.at(-1), { date: "2026-07", totalMonthlyPayment: 4881.17, incomeNeeded: 195246.69, zori: 2896.77, middleZhvi: 592687.87, mortgageRate: 6.542 });
+  assert.equal(marketData.forecast.observations.at(-1)!.growthPct, 3.6);
 
-  const reviewed = { market: 62.4026, offer: 49.2763, budget: 71.7401, stress: 72.5974, rent: 53.1112, wait: 55.7177 };
+  const reviewed = { market: 49.359, offer: 45.7143, budget: 71.7299, stress: 74.8077, rent: 49.6776, wait: 57.8726 };
   for (const [actual, expected] of [[market.score, reviewed.market], [offer.score, reviewed.offer], [budget.score, reviewed.budget], [stress.score, reviewed.stress], [rent.score, reviewed.rent], [wait.score, reviewed.wait]]) {
     assert.ok(Math.abs(actual - expected) < 0.001, `${actual} should equal independently reviewed ${expected}`);
   }
