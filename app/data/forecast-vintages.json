@@ -35,6 +35,23 @@
           "growthPct": 3.6
         }
       ]
+    },
+    {
+      "baseDate": "2026-09-30",
+      "observations": [
+        {
+          "date": "2026-10",
+          "growthPct": 0.4
+        },
+        {
+          "date": "2026-12",
+          "growthPct": 0.5
+        },
+        {
+          "date": "2027-09",
+          "growthPct": 2.2
+        }
+      ]
     }
   ]
 }
